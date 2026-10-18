@@ -1,0 +1,22 @@
+# Rebuilds generated pages whenever content in data/ changes (e.g. after a publish from /admin).
+name: build-site
+on:
+  push:
+    branches: [main]
+    paths: ["data/projects.json", "data/site.json", "build.js"]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: node build.js
+      - name: Commit generated files
+        run: |
+          git config user.name "credence-build"
+          git config user.email "build@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "build: regenerate site from content" && git push

@@ -3,7 +3,7 @@
 // Usage: node build.js
 const fs = require("fs");
 const read = f => JSON.parse(fs.readFileSync(f, "utf8"));
-const site = read("data/site.json"), projects = read("data/projects.json");
+const site = read("data/site.json"), projects = read("data/projects.json").projects;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 function page(p) {
@@ -29,8 +29,14 @@ function page(p) {
   const spec = (p.spec || []).length ? `
   <section class="spec-sec">
     <div class="sec-head reveal"><p class="eyebrow">Specification</p><h2>Project at a glance</h2></div>
-    <table class="spec reveal">${p.spec.map(r => `<tr><th scope="row">${esc(r[0])}</th><td>${esc(r[1])}</td></tr>`).join("")}</table>
+    <table class="spec reveal">${p.spec.map(r => `<tr><th scope="row">${esc(r.k)}</th><td>${esc(r.v)}</td></tr>`).join("")}</table>
   </section>` : "";
+  const gallery = (p.gallery || []).length ? `
+  <section>
+    <div class="sec-head reveal"><p class="eyebrow">Gallery</p><h2>See ${esc(p.name)}</h2></div>
+    <div class="gallery reveal">${p.gallery.map(g => `<img src="${esc(g.image)}" alt="${esc(g.alt || p.name)}" loading="lazy">`).join("")}</div>
+  </section>` : "";
+  const brochure = p.brochure ? `<a class="btn dark dl" href="${esc(p.brochure)}" download>Download brochure</a>` : "";
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -39,11 +45,12 @@ function page(p) {
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${url}">
-<meta property="og:type" content="website"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${url}">
+<meta property="og:type" content="website"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${url}">${p.ogImage || site.ogImage ? `<meta property="og:image" content="${site.siteUrl}/${esc(p.ogImage || site.ogImage)}">` : ""}
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="data/site.js"></script><script src="tracking.js" defer></script>
 </head>
 <body class="open">
 <header class="nav" id="nav">
@@ -62,6 +69,7 @@ function page(p) {
       <h1 class="ph">${esc(p.name)}</h1>
       <p>${esc(tagline)}</p>
       <span class="badge">${esc(p.addr)}</span>
+      ${brochure}
     </div>
     <div class="tower-wrap"><svg id="tower" viewBox="0 0 300 640" aria-hidden="true"></svg></div>
     <div class="mist"></div>
@@ -69,6 +77,7 @@ function page(p) {
   </section>
 ${story}
 ${spec}
+${gallery}
   <section>
     <div class="sec-head reveal"><p class="eyebrow">Location</p><h2>${esc(p.area)}, Dhaka</h2></div>
     <iframe class="map reveal" title="Map of ${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
@@ -107,6 +116,19 @@ ${spec}
 
 projects.forEach(p => fs.writeFileSync(`project-${p.slug}.html`, page(p)));
 fs.writeFileSync("data/projects.js", "window.PROJECTS=" + JSON.stringify(projects.map(({ slug, name, area, addr, type, status, hue }) => ({ slug, name, area, addr, type, status, hue }))) + ";\n");
+// public (non-secret) site settings for the browser
+fs.writeFileSync("data/site.js", "window.SITE=" + JSON.stringify({ hotline: site.hotline, whatsapp: site.whatsapp, formEndpoint: site.formEndpoint, consentRequired: site.consentRequired, tracking: site.tracking }) + ";\n");
+// home page SEO block (between markers in index.html)
+let home = fs.readFileSync("index.html", "utf8");
+const seo = `<!--seo:start-->
+<title>${esc(site.homeTitle)}</title>
+<meta name="description" content="${esc(site.homeDesc)}">
+<link rel="canonical" href="${site.siteUrl}/">
+<meta property="og:type" content="website"><meta property="og:title" content="${esc(site.homeTitle)}"><meta property="og:description" content="${esc(site.homeDesc)}"><meta property="og:url" content="${site.siteUrl}/">${site.ogImage ? `<meta property="og:image" content="${site.siteUrl}/${esc(site.ogImage)}">` : ""}
+<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "RealEstateAgent", name: site.name, url: site.siteUrl, telephone: site.phone[0], email: site.email, address: { "@type": "PostalAddress", streetAddress: site.address, addressLocality: "Dhaka", addressCountry: "BD" } })}</script>
+<!--seo:end-->`;
+home = home.replace(/<!--seo:start-->[\s\S]*?<!--seo:end-->/, seo);
+fs.writeFileSync("index.html", home);
 const urls = ["", ...projects.map(p => `project-${p.slug}.html`)];
 fs.writeFileSync("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${site.siteUrl}/${u}</loc></url>`).join("\n")}\n</urlset>\n`);
 fs.writeFileSync("robots.txt", `User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: ${site.siteUrl}/sitemap.xml\n`);

@@ -1,8 +1,23 @@
 {
   "siteUrl": "https://ruhulamen-1.github.io/Credence-website",
   "name": "Credence Housing Limited",
-  "phone": ["+880241021375", "+880241021378"],
+  "phone": [
+    "+880241021375",
+    "+880241021378"
+  ],
   "hotline": "16769",
   "email": "info@credencehousinglimited.com",
-  "address": "House-15, Road-13/A, Dhanmondi R/A, Dhaka-1209"
+  "address": "House-15, Road-13/A, Dhanmondi R/A, Dhaka-1209",
+  "whatsapp": "",
+  "formEndpoint": "",
+  "consentRequired": true,
+  "tracking": {
+    "ga4": "",
+    "gtm": "",
+    "metaPixel": "",
+    "tiktokPixel": ""
+  },
+  "homeTitle": "Credence Housing Limited — Live Above the Ordinary",
+  "homeDesc": "Credence Housing Limited — a leading real estate developer in Dhaka, Bangladesh. 50+ completed projects, 700+ homes handed over.",
+  "ogImage": ""
 }

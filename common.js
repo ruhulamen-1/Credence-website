@@ -1,4 +1,3 @@
-const $=s=>document.querySelector(s);
 /* nav / menu */
 const nav=$("#nav"),menu=$("#menu"),mb=$("#menuBtn");
 addEventListener("scroll",()=>nav.classList.toggle("solid",scrollY>60),{passive:true});
@@ -18,7 +17,8 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
 document.querySelectorAll(".reveal").forEach(e=>io.observe(e));
 
 /* contact form */
-$("#contactForm").addEventListener("submit",e=>{
+const cf=$("#contactForm");
+cf&&cf.addEventListener("submit",async e=>{
  e.preventDefault();const f=e.target;let ok=true;
  f.querySelectorAll("label").forEach(l=>{
   const i=l.querySelector("input,textarea"),m=l.querySelector("em");
@@ -27,5 +27,19 @@ $("#contactForm").addEventListener("submit",e=>{
   else if(i.type==="email"&&i.value&&!i.checkValidity())msg="Enter a valid email address.";
   l.classList.toggle("bad",!!msg);m.textContent=msg;if(msg)ok=false;
  });
- if(ok){$("#ok").hidden=false;f.reset()}
+ if(!ok)return;
+ const out=$("#ok"),btn=f.querySelector("button[type=submit]"),site=window.SITE||{};
+ const body={...Object.fromEntries(new FormData(f)),page:location.pathname,...(window.getAttribution?getAttribution():{})};
+ const thanks=out.dataset.thanks||(out.dataset.thanks=out.textContent);
+ const done=t=>{out.textContent=t;out.className="ok";out.hidden=false};
+ if(site.formEndpoint){
+  btn.disabled=true;
+  try{
+   const r=await fetch(site.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(body)});
+   if(!r.ok)throw 0;
+  }catch(_){out.textContent="We couldn’t send your message. Please call "+(site.hotline||"us")+" or try again.";out.className="ok err";out.hidden=false;btn.disabled=false;return}
+  btn.disabled=false;
+ }
+ done(thanks);f.reset();
+ window.track&&track("generate_lead",{page:body.page});
 });

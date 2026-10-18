@@ -144,3 +144,12 @@ footer strong{color:#fff;letter-spacing:.25em}
 @media(max-width:560px){.phero .tower-wrap{width:36vw;right:-4vw;bottom:36%}}
 
 .phero .ph{font-size:clamp(52px,9vw,110px);letter-spacing:.04em;text-transform:uppercase;margin-bottom:22px}
+
+.ok.err{color:#b3261e}
+
+/* marketing: whatsapp button + cookie consent */
+.wa{position:fixed;right:18px;bottom:18px;z-index:35;background:#1fa855;color:#fff;text-decoration:none;font:500 13px var(--sans);padding:12px 18px;border-radius:99px;box-shadow:0 10px 30px rgba(0,0,0,.2);min-height:44px;display:flex;align-items:center}
+.consent{position:fixed;left:18px;bottom:18px;right:18px;max-width:520px;z-index:60;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:0 20px 60px rgba(30,70,120,.18);display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:13px}
+.consent p{flex:1 1 220px}.consent div{display:flex;gap:8px}.consent .btn:not(.dark){background:#eef3f8;color:var(--ink)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;display:block}
+.dl{display:inline-block;margin-top:14px;text-decoration:none}

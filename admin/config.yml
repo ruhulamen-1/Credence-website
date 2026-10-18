@@ -1,0 +1,103 @@
+# Decap CMS — Credence admin (served at /admin/)
+# Local test:  npx decap-server   (then open /admin/ on your local site)  — see ADMIN_GUIDE.md
+# Live:        host on Netlify (or Cloudflare Pages + OAuth proxy) and log in with GitHub.
+backend:
+  name: github
+  repo: ruhulamen-1/Credence-website
+  branch: main
+  commit_messages:
+    create: "Admin: add {{collection}} “{{slug}}”"
+    update: "Admin: update {{collection}} “{{slug}}”"
+    delete: "Admin: delete {{collection}} “{{slug}}”"
+local_backend: true
+publish_mode: simple
+media_folder: images
+public_folder: /images
+site_url: https://ruhulamen-1.github.io/Credence-website
+display_url: https://ruhulamen-1.github.io/Credence-website
+
+collections:
+  - name: content
+    label: Website content
+    files:
+      - name: projects
+        label: Projects
+        file: data/projects.json
+        format: json
+        fields:
+          - label: Projects
+            name: projects
+            widget: list
+            label_singular: project
+            summary: "{{fields.name}} — {{fields.status}}"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: "URL slug (e.g. bella-vista — don't change after launch)", name: slug, widget: string, pattern: ["^[a-z0-9-]+$", "Lowercase letters, numbers and dashes only"] }
+              - { label: Status, name: status, widget: select, options: [Ongoing, Completed, Upcoming] }
+              - { label: Type, name: type, widget: select, options: [Apartment, Commercial] }
+              - { label: Area / neighbourhood (used by the Location filter), name: area, widget: string }
+              - { label: Full address, name: addr, widget: string }
+              - { label: Map search text, name: mapQuery, widget: string, required: false, hint: "What Google Maps should search for, e.g. 'Road 13, Gulshan 1, Dhaka'" }
+              - { label: Tagline (hero text), name: tagline, widget: text, required: false }
+              - { label: Tower colour (0–360), name: hue, widget: number, min: 0, max: 360, default: 208, value_type: int, required: false }
+              - { label: Tower floors, name: floors, widget: number, min: 4, max: 40, default: 16, value_type: int, required: false }
+              - label: Key facts (strip under the hero)
+                name: facts
+                widget: list
+                required: false
+                summary: "{{fields.v}} — {{fields.l}}"
+                fields:
+                  - { label: Value (e.g. 3,366), name: v, widget: string }
+                  - { label: Label (e.g. sq. ft. each), name: l, widget: string }
+              - { label: Story heading, name: storyTitle, widget: string, required: false }
+              - label: Story paragraphs
+                name: story
+                widget: list
+                required: false
+                field: { label: Paragraph, name: paragraph, widget: text }
+              - label: Specification table
+                name: spec
+                widget: list
+                required: false
+                summary: "{{fields.k}}: {{fields.v}}"
+                fields:
+                  - { label: Label, name: k, widget: string }
+                  - { label: Value, name: v, widget: string }
+              - label: Gallery
+                name: gallery
+                widget: list
+                required: false
+                summary: "{{fields.alt}}"
+                fields:
+                  - { label: Image, name: image, widget: image }
+                  - { label: "Alt text (describe the image — good for SEO & accessibility)", name: alt, widget: string }
+              - { label: Brochure (PDF), name: brochure, widget: file, required: false }
+              - { label: Social share image, name: ogImage, widget: image, required: false }
+              - { label: SEO title (≤ 60 chars), name: seoTitle, widget: string, required: false }
+              - { label: SEO description (≤ 160 chars), name: seoDesc, widget: text, required: false }
+
+      - name: site
+        label: Site settings, SEO & tracking
+        file: data/site.json
+        format: json
+        fields:
+          - { label: Public site URL (no trailing slash), name: siteUrl, widget: string }
+          - { label: Company name, name: name, widget: string }
+          - { label: Home page SEO title, name: homeTitle, widget: string }
+          - { label: Home page SEO description, name: homeDesc, widget: text }
+          - { label: Default social share image, name: ogImage, widget: image, required: false }
+          - { label: Corporate office address, name: address, widget: string }
+          - { label: Email, name: email, widget: string }
+          - { label: Hotline, name: hotline, widget: string }
+          - { label: Phone numbers (international format), name: phone, widget: list, field: { label: Number, name: number, widget: string } }
+          - { label: "WhatsApp number (e.g. 8801711292443) — shows a floating button", name: whatsapp, widget: string, required: false }
+          - { label: "Lead form endpoint (Formspree / Netlify / your API URL)", name: formEndpoint, widget: string, required: false }
+          - { label: Ask cookie consent before tracking, name: consentRequired, widget: boolean, default: true }
+          - label: Marketing tracking IDs
+            name: tracking
+            widget: object
+            fields:
+              - { label: "Google Tag Manager (GTM-XXXXXXX)", name: gtm, widget: string, required: false }
+              - { label: "Google Analytics 4 (G-XXXXXXXXXX) — used only if no GTM", name: ga4, widget: string, required: false }
+              - { label: Meta (Facebook) Pixel ID, name: metaPixel, widget: string, required: false }
+              - { label: TikTok Pixel ID, name: tiktokPixel, widget: string, required: false }

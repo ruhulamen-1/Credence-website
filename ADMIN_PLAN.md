@@ -9,7 +9,7 @@ Goal: one back-office at `/admin` (or `/system`) from which the Credence team ca
 
 ## 2. Recommended path (two phases)
 
-### Phase 1 — Git‑based admin (fast, ~1–2 weeks, near‑zero cost)
+### Phase 1 — Git‑based admin (fast, ~1–2 weeks, near‑zero cost) — **BUILT, see ADMIN_GUIDE.md**
 - **Decap CMS** (open source) served at `/admin`. Staff log in, edit forms, press *Publish*; the CMS commits JSON/Markdown to GitHub, and the host rebuilds (`node build.js`) and redeploys in ~1 minute.
 - Host: **Cloudflare Pages** or **Netlify** (free tier; supports build command + GitHub login + form handling) instead of plain GitHub Pages.
 - Forms → **Netlify Forms / Formspree** → email + Google Sheet; later replaced by the CRM in Phase 2.
