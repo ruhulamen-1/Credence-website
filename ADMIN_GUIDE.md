@@ -11,7 +11,7 @@ Automatic: per‑page title/description/canonical/Open Graph, JSON‑LD schema, 
 ## A. Try it on your own computer (no hosting needed)
 ```
 cd Credence-website
-npx decap-server            # terminal 1 — lets the admin write to your local files
+
 python3 -m http.server 8000 # terminal 2
 ```
 Open `http://localhost:8000/admin/` → Login → **Website content** → edit → Save/Publish.

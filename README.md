@@ -19,6 +19,7 @@ Pure HTML/CSS/JS, kono framework ba database lage na. Content `data/` folder-er 
 | `tracking.js` | GA4 / GTM / Meta Pixel / TikTok, cookie consent, WhatsApp button |
 | `data/projects.json` | Sob project-er tothyo |
 | `data/site.json` | Company info, SEO, tracking ID |
+| `dev.js` | `npm start` — website ar admin ek shathe chalay |
 | `build.js` | Data theke page, sitemap, robots.txt baniye dey |
 | `admin/` | Admin panel (`/admin/`) |
 | `images/` | Upload kora chobi ekhane jay |
@@ -27,27 +28,21 @@ Pure HTML/CSS/JS, kono framework ba database lage na. Content `data/` folder-er 
 
 ---
 
-## 2. Computer-e chalano (local)
+## 2. Computer-e chalano (local) — ek command-e website + admin
 
 **Lagbe:** [Node.js](https://nodejs.org) ar [Git](https://git-scm.com).
 
 ```bash
 git clone https://github.com/ruhulamen-1/Credence-website
 cd Credence-website
-npx serve -l 8000
+npm start
 ```
 
-Browser-e kholo: <http://localhost:8000>
+Ei ek command-i website ar admin dutoi chalu kore:
+- Website: <http://localhost:8000>
+- Admin: <http://localhost:8000/admin/> → **Login** → **Website content**
 
-Admin-o chalate chaile **arekta terminal** khule, ekoi folder-e:
-
-```bash
-npx decap-server
-```
-
-Tarpor <http://localhost:8000/admin/> → **Login** → **Website content**.
-
-> Python thakle `python -m http.server 8000` diyeo site chalano jay. Baddho korte `Ctrl + C`.
+Baddho korte `Ctrl + C`. Port busy thakle: `PORT=8001 npm start`.
 
 ---
 
@@ -154,8 +149,8 @@ Prottek `git push`-er pore site nijei update hoy.
 
 | Shomoshya | Somadhan |
 |---|---|
-| `python` command nei | `npx serve -l 8000` use koro |
-| Admin-e "Failed to load" | `npx decap-server` onno terminal-e chalu ache kina dekho |
+| `python` command nei | Lagbe na, `npm start` use koro |
+| Admin-e "Failed to load" | `npm start` cholche kina dekho (admin proxy :8081 port-e chole) |
 | Admin-e change dekhachhe na | `node build.js` chalao, browser-e `Ctrl + F5` |
 | `git push` password chay | GitHub **Personal Access Token** dao (Settings → Developer settings → Tokens) |
 | `LF will be replaced by CRLF` warning | Windows-er normal warning, ignore koro |
