@@ -23,14 +23,14 @@ export default async function Page({ params }: Props) {
   const p = t.buyer
   return (
     <>
-      <Nav lang={lang} t={navT(t)} path={'/buyer'} hotline={s.hotline} />
+      <Nav lang={lang} t={navT(t)} path={'/buyer'} hotline={s.hotline} logo={s.logo?.url} />
       <InnerHero eyebrow={p.eyebrow} title={p.title}><p>{p.text}</p></InnerHero>
       <main>
         <section className="narrow">
           <ContactForm t={t.form} kind="buyer" button={p.send} thanks={p.thanks} messageRequired={false} extra={[{ name: 'budget', label: p.budget }, { name: 'area', label: p.area }, { name: 'size', label: p.size }]} />
         </section>
       </main>
-      <Footer hotline={s.hotline} t={t} />
+      <Footer lang={lang} t={t} />
     </>
   )
 }

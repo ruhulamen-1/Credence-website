@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { href, type Dict, type Lang } from '../i18n'
 
-export function Nav({ lang, t, hotline, cta, ctaHref = '#contact', path }: { lang: Lang; t: Pick<Dict, 'nav' | 'switchTo'>; hotline: string; cta?: string; ctaHref?: string; path?: string }) {
+export function Nav({ lang, t, hotline, logo, cta, ctaHref = '#contact', path }: { lang: Lang; t: Pick<Dict, 'nav' | 'switchTo'>; hotline: string; logo?: string; cta?: string; ctaHref?: string; path?: string }) {
   const [open, setOpen] = useState(false)
   const [solid, setSolid] = useState(false)
   const pathname = usePathname() || '/'
@@ -25,7 +25,7 @@ export function Nav({ lang, t, hotline, cta, ctaHref = '#contact', path }: { lan
     <>
       <header className={`nav${solid ? ' solid' : ''}`} id="nav">
         <button className="menu-btn" id="menuBtn" aria-expanded={open} aria-controls="menu" onClick={() => setOpen((o) => !o)}><span />{t.nav.menu}</button>
-        <a className="logo" href={h('/')} aria-label="Credence Housing Limited">CREDENCE<small>Housing Limited</small></a>
+        <a className="logo" href={h('/')} aria-label="Credence Housing Limited">{logo ? <img src={logo} alt="Credence Housing Limited" className="logo-img" /> : <>CREDENCE<small>Housing Limited</small></>}</a>
         <a className="nav-cta" href={anchor}>{cta || t.nav.enquire}</a>
       </header>
       <nav className={`menu${open ? ' show' : ''}`} id="menu" aria-label="Main" onClick={(e) => (e.target as HTMLElement).closest('a') && setOpen(false)}>

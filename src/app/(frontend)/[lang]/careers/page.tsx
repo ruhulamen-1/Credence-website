@@ -22,7 +22,7 @@ export default async function Careers({ params }: Props) {
   const open = jobs.filter((j) => j.open)
   return (
     <>
-      <Nav lang={lang} t={navT(t)} path={'/careers'} hotline={s.hotline} />
+      <Nav lang={lang} t={navT(t)} path={'/careers'} hotline={s.hotline} logo={s.logo?.url} />
       <InnerHero eyebrow={t.careers.eyebrow} title={t.careers.title}><p>{t.careers.text}</p></InnerHero>
       <main>
         <section>
@@ -38,7 +38,7 @@ export default async function Careers({ params }: Props) {
           )}
         </section>
       </main>
-      <Footer hotline={s.hotline} t={t} />
+      <Footer lang={lang} t={t} />
     </>
   )
 }

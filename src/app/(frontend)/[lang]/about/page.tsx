@@ -34,7 +34,7 @@ export default async function About({ params }: Props) {
   const mgmt = team.filter((m) => m.group === 'management'), rest = team.filter((m) => m.group !== 'management')
   return (
     <>
-      <Nav lang={lang} t={navT(t)} path={'/about'} hotline={s.hotline} />
+      <Nav lang={lang} t={navT(t)} path={'/about'} hotline={s.hotline} logo={s.logo?.url} />
       <InnerHero eyebrow={t.about.eyebrow} title={t.about.title}><p>{t.about.text}</p></InnerHero>
       <main>
         <section>
@@ -43,7 +43,7 @@ export default async function About({ params }: Props) {
           {rest.length > 0 && (<><div className="sec-head reveal"><h2>{t.about.team}</h2></div><Grid list={rest} /></>)}
         </section>
       </main>
-      <Footer hotline={s.hotline} t={t} />
+      <Footer lang={lang} t={t} />
     </>
   )
 }

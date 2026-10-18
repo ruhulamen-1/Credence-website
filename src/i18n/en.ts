@@ -24,6 +24,6 @@ export const en = {
   buyer: { title: 'For Buyers', eyebrow: 'Find your home', text: 'Tell us what you are looking for and a counsellor will suggest the right apartments.', budget: 'Budget (BDT)', area: 'Preferred area', size: 'Apartment size (sq. ft.)', send: 'Find me a home', thanks: 'Thank you — a counsellor will call you shortly with suggestions.' },
   lp: { call: 'Call now' },
   notFound: { title: 'Page not found', text: 'The page you are looking for has moved or does not exist.', home: 'Go to home page' },
-  footer: { rights: 'Credence Housing Ltd.' },
+  footer: { rights: 'Credence Housing Ltd.', navigation: 'Navigation', projects: 'Projects', seeMore: 'See more', social: 'Social', hotline: 'Hotline', enquiry: 'For General Enquiry', email: 'Email' },
 }
 export type Dict = typeof en

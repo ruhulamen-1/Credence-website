@@ -1015,6 +1015,43 @@ export interface SiteSetting {
    */
   whatsapp?: string | null;
   /**
+   * PNG/SVG/WebP, transparent background, about 400px wide. Leave empty to show the text logo.
+   */
+  logo?: (number | null) | Media;
+  /**
+   * Used on the dark footer. If empty, the header logo is used.
+   */
+  footerLogo?: (number | null) | Media;
+  /**
+   * e.g. for the inspired lifestyles
+   */
+  tagline?: string | null;
+  offices?:
+    | {
+        /**
+         * e.g. Corporate Office
+         */
+        label: string;
+        address: string;
+        id?: string | null;
+      }[]
+    | null;
+  socials?:
+    | {
+        platform: 'facebook' | 'x' | 'instagram' | 'youtube' | 'linkedin' | 'tiktok';
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * e.g. Credence Housing Ltd. © copyright 2026. Empty = automatic.
+   */
+  copyright?: string | null;
+  /**
+   * e.g. Designed & Developed by …
+   */
+  credit?: string | null;
+  /**
    * Best: landscape or portrait building photo, at least 1200px wide, under ~400 KB. Leave empty to keep the illustrated tower. Remember to write the alt text in Media.
    */
   heroImage?: (number | null) | Media;
@@ -1059,6 +1096,25 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         id?: T;
       };
   whatsapp?: T;
+  logo?: T;
+  footerLogo?: T;
+  tagline?: T;
+  offices?:
+    | T
+    | {
+        label?: T;
+        address?: T;
+        id?: T;
+      };
+  socials?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
+        id?: T;
+      };
+  copyright?: T;
+  credit?: T;
   heroImage?: T;
   heroCutout?: T;
   siteUrl?: T;

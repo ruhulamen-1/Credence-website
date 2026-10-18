@@ -248,3 +248,26 @@ html[lang=bn] .tag,html[lang=bn] dt,html[lang=bn] .crumbs{letter-spacing:.02em;t
 
 /* home hero with an uploaded photo */
 @media(max-width:900px){.hero:not(.phero) .photo-wrap{order:1}.hero:not(.phero) .finder{order:2}}
+
+/* ===== Footer (logo, offices, links, projects, social) ===== */
+.logo-img{display:block;height:34px;width:auto;max-width:170px;object-fit:contain}
+footer{background:#231f20;color:#fff;padding:clamp(40px,6vw,70px) clamp(20px,6vw,90px) 24px;font-size:14px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(24px,4vw,56px)}
+.foot-logo{height:48px;width:auto;max-width:220px;object-fit:contain;display:block}
+.wordmark-sm{font:600 26px var(--serif);letter-spacing:.3em}
+.foot-tag{margin:6px 0 0;color:#b9b3b0;font-size:12px}
+.foot-offices{margin:28px 0 0}
+.foot-offices>div{margin-bottom:18px}
+.foot-offices dt,.foot-col h4{color:#ff4d00;font:400 12px var(--sans);margin:0 0 6px;letter-spacing:.02em}
+.foot-col h4{margin-top:18px}.foot-col h4:first-child{margin-top:0}
+.foot-offices dd{margin:0;line-height:1.5}
+footer a{color:#fff;text-decoration:none}footer a:hover{color:#ff4d00}
+.foot-col{display:flex;flex-direction:column;gap:12px}
+.foot-col h4{margin-bottom:2px}
+.foot-hot{font:600 26px var(--serif)}
+.foot-social{display:flex;gap:10px;flex-wrap:wrap}
+.foot-social a{width:30px;height:30px;border-radius:50%;background:#ff4d00;display:grid;place-items:center;font-size:13px;font-weight:700;text-transform:uppercase}
+.foot-social a:hover{background:#fff;color:#ff4d00}
+footer .foot-row{margin-top:36px;padding-top:18px;border-top:1px solid #4a4545;color:#9d9794;font-size:12px}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+@media(max-width:520px){.foot-grid{grid-template-columns:1fr}}

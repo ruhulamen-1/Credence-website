@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 import { anyone, canEditContent } from '../access'
+import { requiredInEnglish } from '../validators'
 import { refreshSite } from '../lib/revalidate'
 
 export const SiteSettings: GlobalConfig = {
@@ -19,6 +20,21 @@ export const SiteSettings: GlobalConfig = {
           { name: 'hotline', type: 'text' },
           { name: 'phones', type: 'array', fields: [{ name: 'number', type: 'text', required: true }] },
           { name: 'whatsapp', type: 'text', admin: { description: 'e.g. 8801711292443 — shows a floating WhatsApp button' } },
+        ] },
+        { label: 'Branding & footer', fields: [
+          { name: 'logo', type: 'upload', relationTo: 'media', label: 'Company logo (header)', admin: { description: 'PNG/SVG/WebP, transparent background, about 400px wide. Leave empty to show the text logo.' } },
+          { name: 'footerLogo', type: 'upload', relationTo: 'media', label: 'Footer logo (optional)', admin: { description: 'Used on the dark footer. If empty, the header logo is used.' } },
+          { name: 'tagline', type: 'text', localized: true, admin: { description: 'e.g. for the inspired lifestyles' } },
+          { name: 'offices', type: 'array', label: 'Offices shown in footer', fields: [
+            { name: 'label', type: 'text', localized: true, required: true, validate: requiredInEnglish, admin: { description: 'e.g. Corporate Office' } },
+            { name: 'address', type: 'text', localized: true, required: true, validate: requiredInEnglish },
+          ] },
+          { name: 'socials', type: 'array', label: 'Social links', fields: [
+            { name: 'platform', type: 'select', required: true, options: ['facebook', 'x', 'instagram', 'youtube', 'linkedin', 'tiktok'] },
+            { name: 'url', type: 'text', required: true },
+          ] },
+          { name: 'copyright', type: 'text', localized: true, admin: { description: 'e.g. Credence Housing Ltd. © copyright 2026. Empty = automatic.' } },
+          { name: 'credit', type: 'text', localized: true, admin: { description: 'e.g. Designed & Developed by …' } },
         ] },
         { label: 'Home page', fields: [
           { name: 'heroImage', type: 'upload', relationTo: 'media', label: 'Home hero photo (replaces the illustrated tower)', admin: { description: 'Best: landscape or portrait building photo, at least 1200px wide, under ~400 KB. Leave empty to keep the illustrated tower. Remember to write the alt text in Media.' } },

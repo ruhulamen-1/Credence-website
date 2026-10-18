@@ -23,14 +23,14 @@ export default async function BlogIndex({ params }: Props) {
   const [s, posts] = await Promise.all([getSettings(lang), getPosts(lang)])
   return (
     <>
-      <Nav lang={lang} t={navT(t)} path={'/blog'} hotline={s.hotline} />
+      <Nav lang={lang} t={navT(t)} path={'/blog'} hotline={s.hotline} logo={s.logo?.url} />
       <InnerHero eyebrow={t.blog.eyebrow} title={t.blog.title} />
       <main>
         <section>
           <PostCards posts={posts} lang={lang} t={t.blog} grid={t.grid} backHref={href(lang, '/blog')} />
         </section>
       </main>
-      <Footer hotline={s.hotline} t={t} />
+      <Footer lang={lang} t={t} />
     </>
   )
 }

@@ -36,7 +36,7 @@ export default async function Home({ params }: Props) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, '\\u003c') }} />
       <Intro t={t.intro} />
-      <Nav lang={lang} t={navT(t)} path={'/'} hotline={s.hotline} />
+      <Nav lang={lang} t={navT(t)} path={'/'} hotline={s.hotline} logo={s.logo?.url} />
       <main id="top">
         <section className="hero" id="hero">
           <div className="sky" />
@@ -86,7 +86,7 @@ export default async function Home({ params }: Props) {
           <ContactForm t={t.form} />
         </section>
       </main>
-      <Footer hotline={s.hotline} t={t} />
+      <Footer lang={lang} t={t} />
     </>
   )
 }

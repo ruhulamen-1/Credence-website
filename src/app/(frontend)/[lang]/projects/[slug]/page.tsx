@@ -47,7 +47,7 @@ export default async function ProjectPage({ params }: Props) {
     <>
       <script dangerouslySetInnerHTML={{ __html: "document.body.classList.add('open')" }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, '\\u003c') }} />
-      <Nav lang={lang} t={navT(t)} path={`/projects/${slug}`} hotline={s.hotline} cta={t.nav.interested} ctaHref="#interest" />
+      <Nav lang={lang} t={navT(t)} path={`/projects/${slug}`} hotline={s.hotline} logo={s.logo?.url} cta={t.nav.interested} ctaHref="#interest" />
       <main>
         <section className="hero phero">
           <div className="hero-copy">
@@ -99,7 +99,7 @@ export default async function ProjectPage({ params }: Props) {
           <ContactForm t={t.form} project={p.slug} button={t.form.sendEnquiry} thanks={t.form.thanksTeam} messageRequired={false} />
         </section>
       </main>
-      <Footer hotline={s.hotline} t={t} />
+      <Footer lang={lang} t={t} />
     </>
   )
 }

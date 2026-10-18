@@ -13,6 +13,8 @@ export type Project = {
 export type Settings = {
   name: string; address: string; email: string; hotline: string; phones: string[]; whatsapp: string
   siteUrl: string; homeTitle: string; homeDescription: string; ogImage: Img | null; heroImage: Img | null; heroCutout: boolean
+  logo: Img | null; footerLogo: Img | null; tagline: string; offices: { label: string; address: string }[]
+  socials: { platform: string; url: string }[]; copyright: string; credit: string
   consentRequired: boolean; tracking: { gtm: string; ga4: string; metaPixel: string; tiktokPixel: string }
 }
 export type Post = {
@@ -51,6 +53,13 @@ export async function getSettings(lang: Lang = 'en'): Promise<Settings> {
     ogImage: img(g.ogImage),
     heroImage: img(g.heroImage, 'Credence'),
     heroCutout: !!g.heroCutout,
+    logo: img(g.logo, 'Credence'),
+    footerLogo: img(g.footerLogo || g.logo, 'Credence'),
+    tagline: g.tagline || '',
+    offices: (g.offices || []).filter((o: any) => o.label || o.address).map((o: any) => ({ label: o.label || '', address: o.address || '' })),
+    socials: (g.socials || []).filter((x: any) => x.url).map((x: any) => ({ platform: x.platform, url: x.url })),
+    copyright: g.copyright || '',
+    credit: g.credit || '',
     consentRequired: g.consentRequired !== false,
     tracking: { gtm: t.gtm || '', ga4: t.ga4 || '', metaPixel: t.metaPixel || '', tiktokPixel: t.tiktokPixel || '' },
   }

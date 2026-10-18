@@ -23,14 +23,14 @@ export default async function Page({ params }: Props) {
   const p = t.landowner
   return (
     <>
-      <Nav lang={lang} t={navT(t)} path={'/landowner'} hotline={s.hotline} />
+      <Nav lang={lang} t={navT(t)} path={'/landowner'} hotline={s.hotline} logo={s.logo?.url} />
       <InnerHero eyebrow={p.eyebrow} title={p.title}><p>{p.text}</p></InnerHero>
       <main>
         <section className="narrow">
           <ContactForm t={t.form} kind="landowner" button={p.send} thanks={p.thanks} messageRequired={false} extra={[{ name: 'size', label: p.size }, { name: 'loc', label: p.loc }]} />
         </section>
       </main>
-      <Footer hotline={s.hotline} t={t} />
+      <Footer lang={lang} t={t} />
     </>
   )
 }
