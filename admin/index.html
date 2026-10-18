@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Credence Admin</title>
+<script>
+  /* Works for /admin, /admin/ and /admin/index.html (some servers, e.g. `npx serve`, drop the trailing slash). */
+  (function(){
+    var p=location.pathname,i=p.lastIndexOf("/admin");
+    var l=document.createElement("link");
+    l.rel="cms-config-url";l.type="text/yaml";
+    l.href=(i>=0?p.slice(0,i):"")+"/admin/config.yml";
+    document.head.appendChild(l);
+  })();
+</script>
 </head>
 <body>
 <script src="https://unpkg.com/decap-cms@3.1.10/dist/decap-cms.js"></script>
