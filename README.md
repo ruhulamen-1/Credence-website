@@ -42,6 +42,8 @@ Ei ek command-i website ar admin dutoi chalu kore:
 - Website: <http://localhost:8000>
 - Admin: <http://localhost:8000/admin/> → **Login** → **Website content**
 
+Admin-e **Publish** dile site **nijei rebuild** hoy (terminal-e `[build] site rebuilt` dekhabe). Browser-e `Ctrl + F5` dilei notun content dekhabe.
+
 Baddho korte `Ctrl + C`. Port busy thakle: `PORT=8001 npm start`.
 
 ---
@@ -50,9 +52,8 @@ Baddho korte `Ctrl + C`. Port busy thakle: `PORT=8001 npm start`.
 
 1. `/admin/` e jao → **Website content**.
 2. **Projects** → project select → field bodlao → **Publish**.
-3. Terminal-e:
+3. `npm start` cholle build nijei hoy. Ebar GitHub-e pathao:
    ```bash
-   node build.js
    git add -A
    git commit -m "Update content"
    git push
