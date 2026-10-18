@@ -38,6 +38,7 @@ Rule: ~60% white/mist, ~30% sky blue, ~10% gold + ink. No other accent colours (
 
 ## Motion
 Scroll motion lives in `motion.js` (no libraries; styles under `html.m` in `style.css`; skipped for reduced-motion):
+- **Smooth scroll** (`smooth.js`): inertial wheel/trackpad scrolling (easing ~7/s), smooth `#anchor` jumps; touch devices and reduced-motion keep native scroll.
 - **Headlines** split into words that slide up from a mask, staggered (hero plays after the intro opens).
 - **Project cards** fan in on scroll: rise, un-tilt (tilt follows column position) and scale up; smoothed with easing.
 - **Hero parallax:** tower/photo drifts slower than the page, copy lifts.

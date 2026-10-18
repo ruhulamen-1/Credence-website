@@ -115,6 +115,7 @@ ${gallery}
 <footer><div class="wordmark" aria-hidden="true">CREDENCE</div><div class="foot-row"><div><strong>CREDENCE</strong> Housing Limited</div><div>© ${new Date().getFullYear()} Credence Housing Ltd. · Hotline ${esc(site.hotline)}</div></div></footer>
 <script src="tower.js"></script>
 <script src="common.js"></script>
+<script src="smooth.js"></script>
 <script src="motion.js"></script>
 ${p.image ? "" : `<script>tower(document.querySelector("#tower"),${p.hue ?? 208},${p.floors || 18})</script>`}
 </body>

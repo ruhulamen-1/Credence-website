@@ -1,6 +1,7 @@
 :root{--ink:#14202e;--mute:#5b6b7c;--gold:#b98b5a;--gold2:#e6c391;--sky:#6fb3e8;--line:rgba(20,32,46,.12);--serif:"Cormorant Garamond",Georgia,serif;--sans:Poppins,system-ui,sans-serif}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
+html.smooth{scroll-behavior:auto}
 body{font:400 15px/1.7 var(--sans);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
 body.locked{overflow:hidden}
 a{color:inherit}

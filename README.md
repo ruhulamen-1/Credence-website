@@ -16,6 +16,7 @@ Pure HTML/CSS/JS, kono framework ba database lage na. Content `data/` folder-er 
 | `script.js` | Home page-er interaction (intro, filter, project card) |
 | `common.js` | Sob page-er common kaj (menu, animation, contact form) |
 | `tower.js` | Tower-er SVG drawing |
+| `smooth.js` | Smooth (inertial) scrolling |
 | `motion.js` | Scroll animation (headline reveal, card fan, parallax, mask reveal, wordmark) |
 | `tracking.js` | GA4 / GTM / Meta Pixel / TikTok, cookie consent, WhatsApp button |
 | `data/projects.json` | Sob project-er tothyo |
