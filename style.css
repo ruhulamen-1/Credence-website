@@ -117,3 +117,28 @@ footer strong{color:#fff;letter-spacing:.25em}
  .finder-foot .btn{width:100%}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}html{scroll-behavior:auto}}
+
+/* project cards link */
+.card{position:relative}.stretch{text-decoration:none}.stretch::after{content:"";position:absolute;inset:0}
+
+/* project detail page */
+.phero{min-height:88svh;padding-bottom:0}
+.phero .hero-copy{opacity:1;transform:none;max-width:560px}
+.phero h2{font-size:clamp(52px,9vw,110px);letter-spacing:.04em;text-transform:uppercase}
+.phero .tower-wrap{bottom:-4%}
+.badge{display:inline-block;margin-top:22px;padding:8px 16px;border-radius:99px;background:rgba(255,255,255,.7);backdrop-filter:blur(8px);font-size:12px;letter-spacing:.08em}
+.crumbs{font-size:12px;letter-spacing:.08em;margin-bottom:18px}.crumbs a{text-decoration:none;color:#26374b}.crumbs a:hover{text-decoration:underline}
+.facts{position:relative;z-index:4;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(30,70,120,.12);margin-top:40px}
+.facts div{background:rgba(255,255,255,.9);padding:22px 20px}
+.facts b{display:block;font:500 clamp(26px,3vw,40px)/1.1 var(--serif)}.facts span{font-size:12px;color:var(--mute)}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px)}
+.story p{color:#33455a;margin-bottom:16px}
+.spec{width:100%;border-collapse:collapse;font-size:14px}
+.spec th,.spec td{text-align:left;padding:14px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.spec th{font:500 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);width:38%;padding-right:16px}
+.spec-sec{background:#f3f7fb}
+.map{width:100%;height:min(60vh,460px);border:0;border-radius:20px;box-shadow:0 20px 60px rgba(30,70,120,.1)}
+.back{display:inline-block;margin-top:18px;color:var(--ink)}
+@media(max-width:900px){.facts{grid-template-columns:repeat(2,1fr)}.story{grid-template-columns:1fr}.facts div:last-child{grid-column:1/-1}}
+.phero .tower-wrap{width:min(32vw,300px);bottom:22%;right:clamp(10px,12vw,200px)}
+@media(max-width:560px){.phero .tower-wrap{width:44vw;right:-8vw;bottom:34%}}
