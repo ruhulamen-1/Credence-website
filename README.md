@@ -1,5 +1,7 @@
 # Credence Housing Limited — Website
 
+> **নতুন:** `web/` ফোল্ডারে Next.js + Payload CMS সংস্করণ আছে (admin-এ Leads/CRM, roles, SEO, tracking)। দেখো [`web/README.md`](web/README.md) ও [`NEXTJS_MIGRATION_PLAN.md`](NEXTJS_MIGRATION_PLAN.md)। নিচের বর্ণনা পুরনো স্ট্যাটিক সাইটের।
+
 Dhaka-r real estate company Credence Housing Limited-er website. Theme: **"Above the Clouds"** (megh → tower → "Live Above The Ordinary" → property finder).
 
 Pure HTML/CSS/JS, kono framework ba database lage na. Content `data/` folder-er JSON file theke ashe, `/admin` theke edit kora jay.
