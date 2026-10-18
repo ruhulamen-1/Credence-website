@@ -32,7 +32,7 @@ async function main() {
       name: p.name, slug: p.slug, status: p.status, type: p.type, area: p.area, addr: p.addr, mapQuery: p.mapQuery,
       tagline: p.tagline, hue: p.hue, floors: p.floors, storyTitle: p.storyTitle, order: (order += 10),
       facts: p.facts || [], story: (p.story || []).map((paragraph: string) => ({ paragraph })), spec: p.spec || [],
-      seoTitle: p.seoTitle, seoDescription: p.seoDesc,
+      seoTitle: p.seoTitle, seoDescription: p.seoDesc, _status: 'published',
     } as never
     const found = await payload.find({ collection: 'projects', where: { slug: { equals: p.slug } }, limit: 1, depth: 0 })
     if (found.docs[0]) await payload.update({ collection: 'projects', id: found.docs[0].id, data })

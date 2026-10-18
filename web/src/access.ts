@@ -17,3 +17,12 @@ export const canWorkLeads: Access = ({ req }) => {
 }
 export const adminOnlyField: FieldAccess = ({ req }) => (req.user as U)?.role === 'admin'
 export const anyone: Access = () => true
+
+/** Public visitors only see published documents; logged-in staff see drafts too. */
+export const readPublished: Access = ({ req }) => (req.user ? true : { _status: { equals: 'published' } })
+
+/** Admin, sales and marketing can read leads (marketing: view only). */
+export const canReadLeads: Access = ({ req }) => {
+  const r = (req.user as U)?.role
+  return r === 'admin' || r === 'sales' || r === 'marketing'
+}

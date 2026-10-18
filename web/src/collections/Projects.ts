@@ -1,13 +1,15 @@
 import type { CollectionConfig } from 'payload'
-import { anyone, canEditContent } from '../access'
+import { requiredInEnglish } from '../validators'
+import { canEditContent, readPublished } from '../access'
 import { refreshSite } from '../lib/revalidate'
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
   admin: { useAsTitle: 'name', defaultColumns: ['name', 'status', 'area', 'order'], group: 'Content' },
   defaultSort: 'order',
+  versions: { drafts: { schedulePublish: true }, maxPerDoc: 25 },
   hooks: { afterChange: [({ doc }) => { refreshSite(); return doc }], afterDelete: [() => { refreshSite() }] },
-  access: { read: anyone, create: canEditContent, update: canEditContent, delete: canEditContent },
+  access: { read: readPublished, create: canEditContent, update: canEditContent, delete: canEditContent },
   fields: [
     {
       type: 'tabs',
@@ -34,9 +36,9 @@ export const Projects: CollectionConfig = {
               ],
             },
             { name: 'area', type: 'text', required: true, admin: { description: 'Neighbourhood — used by the Location filter, e.g. Gulshan' } },
-            { name: 'addr', type: 'text', required: true, label: 'Full address' },
+            { name: 'addr', type: 'text', localized: true, validate: requiredInEnglish, label: 'Full address' },
             { name: 'mapQuery', type: 'text', admin: { description: "What Google Maps should search, e.g. 'Road 13, Gulshan 1, Dhaka'" } },
-            { name: 'tagline', type: 'textarea', admin: { description: 'Hero text on the project page' } },
+            { name: 'tagline', type: 'textarea', localized: true, admin: { description: 'Hero text on the project page' } },
           ],
         },
         {
@@ -52,12 +54,12 @@ export const Projects: CollectionConfig = {
         {
           label: 'Details',
           fields: [
-            { name: 'facts', type: 'array', labels: { singular: 'Fact', plural: 'Key facts' }, admin: { description: 'Strip under the hero' }, fields: [
+            { name: 'facts', type: 'array', localized: true, labels: { singular: 'Fact', plural: 'Key facts' }, admin: { description: 'Strip under the hero' }, fields: [
               { type: 'row', fields: [{ name: 'v', type: 'text', required: true, label: 'Value (e.g. 3,366)' }, { name: 'l', type: 'text', required: true, label: 'Label (e.g. sq. ft. each)' }] },
             ] },
-            { name: 'storyTitle', type: 'text' },
-            { name: 'story', type: 'array', labels: { singular: 'Paragraph', plural: 'Story' }, fields: [{ name: 'paragraph', type: 'textarea', required: true }] },
-            { name: 'spec', type: 'array', labels: { singular: 'Row', plural: 'Specification table' }, fields: [
+            { name: 'storyTitle', type: 'text', localized: true },
+            { name: 'story', type: 'array', localized: true, labels: { singular: 'Paragraph', plural: 'Story' }, fields: [{ name: 'paragraph', type: 'textarea', required: true }] },
+            { name: 'spec', type: 'array', localized: true, labels: { singular: 'Row', plural: 'Specification table' }, fields: [
               { type: 'row', fields: [{ name: 'k', type: 'text', required: true, label: 'Label' }, { name: 'v', type: 'text', required: true, label: 'Value' }] },
             ] },
           ],
@@ -65,8 +67,8 @@ export const Projects: CollectionConfig = {
         {
           label: 'SEO',
           fields: [
-            { name: 'seoTitle', type: 'text', maxLength: 70, admin: { description: 'Up to ~60 characters' } },
-            { name: 'seoDescription', type: 'textarea', maxLength: 180, admin: { description: 'Up to ~160 characters' } },
+            { name: 'seoTitle', type: 'text', localized: true, maxLength: 70, admin: { description: 'Up to ~60 characters' } },
+            { name: 'seoDescription', type: 'textarea', localized: true, maxLength: 180, admin: { description: 'Up to ~160 characters' } },
             { name: 'ogImage', type: 'upload', relationTo: 'media', label: 'Social share image' },
           ],
         },

@@ -14,7 +14,7 @@ export const SiteSettings: GlobalConfig = {
       tabs: [
         { label: 'Company', fields: [
           { name: 'name', type: 'text', required: true, defaultValue: 'Credence Housing Limited' },
-          { name: 'address', type: 'text' },
+          { name: 'address', type: 'text', localized: true },
           { name: 'email', type: 'email' },
           { name: 'hotline', type: 'text' },
           { name: 'phones', type: 'array', fields: [{ name: 'number', type: 'text', required: true }] },
@@ -22,8 +22,8 @@ export const SiteSettings: GlobalConfig = {
         ] },
         { label: 'SEO', fields: [
           { name: 'siteUrl', type: 'text', required: true, defaultValue: 'http://localhost:3000', admin: { description: 'Public URL, no trailing slash' } },
-          { name: 'homeTitle', type: 'text' },
-          { name: 'homeDescription', type: 'textarea' },
+          { name: 'homeTitle', type: 'text', localized: true },
+          { name: 'homeDescription', type: 'textarea', localized: true },
           { name: 'ogImage', type: 'upload', relationTo: 'media', label: 'Default social share image' },
         ] },
         { label: 'Tracking', fields: [

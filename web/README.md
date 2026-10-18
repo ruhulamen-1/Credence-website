@@ -34,6 +34,21 @@ npm run dev
 
 Save করলেই সাইটে সাথে সাথে বদলে যায় (আলাদা build লাগে না)।
 
+## ২ক. নতুন মডিউল (সব `/admin` থেকে)
+| মেনু | কাজ |
+|---|---|
+| **Blog, News & Events** | লেখা/সংবাদ/ইভেন্ট। Draft রাখা যায়, **Schedule publish** দিয়ে পরে প্রকাশ। পেজ: `/blog` |
+| **Management & Team** | টিম সদস্য → `/about` |
+| **Careers** | চাকরির বিজ্ঞপ্তি → `/careers` (আবেদন Leads-এ আসে, type = career) |
+| **Campaign pages** | বিজ্ঞাপনের জন্য `/lp/<slug>` পেজ, ফোন নম্বর, **A/B test** (headline/button) |
+| **Redirects** | পুরনো URL → নতুন URL (301/302) |
+| **Leads** | ধরন: project / landowner / buyer / career / campaign। উপরে **Download CSV** বাটন |
+| **Dashboard** | Admin-এর হোমে লিডের হিসাব (৭/৩০ দিন, pipeline, সোর্স, প্রজেক্ট) |
+
+**বাংলা ভার্সন:** ইংরেজি `/…`, বাংলা `/bn/…`। Admin-এর উপরে ডানে **Locale** বদলে বাংলা লেখা বসাও (ফাঁকা থাকলে সাইটে ইংরেজিই দেখায়)। UI-র বাংলা লেখা `src/i18n/bn.ts`-এ — প্রকাশের আগে একজন বাংলাভাষীকে দিয়ে দেখিয়ে নাও।
+
+**Draft ও schedule:** Save Draft করলে শুধু স্টাফ দেখে; Publish করলে সাইটে যায়। Publish বাটনের পাশে Schedule দিয়ে সময় ঠিক করা যায় (লোকালে `npm run dev` চললেই চলে; Vercel-এ `CRON_SECRET` লাগে)।
+
 ## ৩. ছবি বদলানো
 Admin → **Projects** → প্রজেক্ট → **Look** ট্যাব → **Cover photo** আপলোড → Save। তখন card ও project page-এ আঁকা টাওয়ারের বদলে ছবি আসে। Alt text লিখো। ছবি 1600px-এর নিচে, ~300KB রাখা ভালো।
 
@@ -49,9 +64,12 @@ Admin → **Projects** → প্রজেক্ট → **Look** ট্যাব
 | Path | কাজ |
 |---|---|
 | `src/payload.config.ts` | CMS কনফিগ (DB, storage, collections) |
-| `src/collections/` | Projects, Leads, Media, Users |
+| `src/collections/` | Projects, Posts, Team, Careers, LandingPages, Leads, Redirects, Media, Users |
 | `src/globals/SiteSettings.ts` | সাইট সেটিংস |
-| `src/app/(frontend)/` | পেজ (home, `projects/[slug]`, sitemap, robots, `api/enquiry`) |
+| `src/app/(frontend)/[lang]/` | পেজ (home, projects, blog, about, careers, landowner, buyer, lp, catch-all redirect) — `[lang]` = en/bn |
+| `src/i18n/` | ইংরেজি ও বাংলা UI টেক্সট (`en.ts`, `bn.ts`) |
+| `src/proxy.ts` | `/` → ইংরেজি, `/bn` → বাংলা |
+| `src/components/admin/` | Admin ড্যাশবোর্ড ও CSV বাটন |
 | `src/components/` | Intro, Nav, Finder, ProjectGrid, ContactForm, Tower… |
 | `src/app/(frontend)/globals.css` | ডিজাইন (পুরনো `style.css` একই) |
 | `public/` | `motion.js`, `smooth.js`, `tracking.js`, `effects.js`, ছবি |

@@ -2,8 +2,9 @@
 import type { Project } from '../lib/data'
 import { resetFilters, useFilters } from '../lib/filterStore'
 import { TowerGraphic } from './TowerGraphic'
+import { href, fmt, type Dict, type Lang } from '../i18n'
 
-function Card({ p, hidden }: { p: Project; hidden: boolean }) {
+function Card({ p, hidden, lang, t }: { p: Project; hidden: boolean; lang: Lang; t: Dict['grid'] }) {
   const uid = `c-${p.slug}`
   return (
     <article className="card reveal" hidden={hidden}>
@@ -23,25 +24,25 @@ function Card({ p, hidden }: { p: Project; hidden: boolean }) {
         </svg>
       )}
       <div>
-        <h3><a href={`/projects/${p.slug}`} className="stretch">{p.name}</a></h3>
+        <h3><a href={href(lang, `/projects/${p.slug}`)} className="stretch">{p.name}</a></h3>
         <p>{p.addr}</p>
-        <span className="tag">{p.status} · {p.type}</span>
+        <span className="tag">{t.status[p.status as keyof Dict['grid']['status']] || p.status} · {t.type[p.type as keyof Dict['grid']['type']] || p.type}</span>
       </div>
     </article>
   )
 }
 
-export function ProjectGrid({ projects }: { projects: Project[] }) {
+export function ProjectGrid({ projects, lang, t }: { projects: Project[]; lang: Lang; t: Dict['grid'] }) {
   const f = useFilters()
   const ok = (p: Project) => (!f.type || p.type === f.type) && (!f.status || p.status === f.status) && (!f.loc || p.area === f.loc) && (!f.name || p.name === f.name)
   const n = projects.filter(ok).length
   return (
     <>
-      <span id="count" className="count">{n} project{n === 1 ? '' : 's'} shown</span>
+      <span id="count" className="count">{fmt(t.shown, { n }).replace('(s)', n === 1 ? '' : 's')}</span>
       <div className="grid" id="grid">
-        {projects.map((p) => <Card key={p.slug} p={p} hidden={!ok(p)} />)}
+        {projects.map((p) => <Card key={p.slug} p={p} hidden={!ok(p)} lang={lang} t={t} />)}
       </div>
-      <p className="none" id="none" hidden={n > 0}>No projects match that search. <button className="link" onClick={resetFilters}>Show all projects</button></p>
+      <p className="none" id="none" hidden={n > 0}>{t.none} <button className="link" onClick={resetFilters}>{t.showAll}</button></p>
     </>
   )
 }

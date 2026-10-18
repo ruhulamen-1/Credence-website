@@ -28,16 +28,16 @@
     el.classList.add("split");
     el.setAttribute("aria-label", el.textContent.replace(/\s+/g, " ").trim());
   }
-  var splitEls = $$(".hero h2,.hero .ph,.lead .big,.sec-head h2,.contact h2,.story h2");
+  var splitEls = $$(".hero h2,.hero .ph,.inner-hero .ph,.lp-h,.lead .big,.sec-head h2,.contact h2,.story h2");
   splitEls.forEach(split);
 
   /* 2. Reveal-on-view (words, image masks, wordmark) */
   var seen = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); seen.unobserve(e.target); } });
   }, { threshold: 0.2 });
-  splitEls.filter(function (e) { return !e.closest(".hero"); }).forEach(function (e) { seen.observe(e); });
+  splitEls.filter(function (e) { return !e.closest(".hero,.inner-hero,.lp-page"); }).forEach(function (e) { seen.observe(e); });
   /* project pages have no intro: play the hero headline right after first paint */
-  splitEls.filter(function (e) { return e.closest(".phero"); }).forEach(function (e) {
+  splitEls.filter(function (e) { return e.closest(".phero,.inner-hero,.lp-page"); }).forEach(function (e) {
     requestAnimationFrame(function () { requestAnimationFrame(function () { e.classList.add("in"); }); });
   });
   function maskImages() { $$(".gallery img,.card>img,.photo-wrap").forEach(function (e) { e.classList.add("mask"); seen.observe(e); }); }
