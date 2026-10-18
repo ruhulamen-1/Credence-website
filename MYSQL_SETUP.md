@@ -6,6 +6,25 @@
 > **আমি এটা আসল MySQL সার্ভারে চালিয়ে দেখতে পারিনি** (আমার পরিবেশে MySQL নেই) — শুধু যাচাই করেছি যে কোড বিল্ড হয় এবং `mysql://` দিলে অ্যাডাপ্টারটি লোড হয়ে সার্ভারে সংযোগের চেষ্টা করে। তোমার কম্পিউটারে প্রথম চালানোয় কোনো এরর এলে লেখাটা পাঠিও।
 > গুরুত্বপূর্ণ ব্যবসায়িক সাইটের জন্য অফিশিয়াল সমর্থিত PostgreSQL-ই বেশি নিরাপদ বাছাই।
 
+## ⚠ সংস্করণ (Version) — খুব গুরুত্বপূর্ণ
+এই সাইটের জন্য লাগবে **MySQL 8.0.19+** অথবা **MariaDB 10.6+**। **XAMPP-এর সাধারণত MariaDB 10.4** থাকে — সেটায় এই এরর আসে:
+`FUNCTION credence_website.json_arrayagg does not exist`
+নিজের সংস্করণ দেখতে phpMyAdmin → **SQL** ট্যাব → `SELECT VERSION();` → Go। (`npm run db:check`-ও সংস্করণ দেখিয়ে দেয়।)
+
+পুরনো হলে তিনটি উপায়:
+1. **নতুন MariaDB/MySQL ইনস্টল** করে সেটা ব্যবহার (নিচে ধাপ)।
+2. **Laragon** ব্যবহার (এতে নতুন MySQL ও phpMyAdmin-সহ সব একসাথে আসে)।
+3. আপাতত **SQLite** (`DATABASE_URL=file:./credence.db`) বা **PostgreSQL** — এদের এই সীমাবদ্ধতা নেই।
+
+**নতুন MariaDB বসানো (XAMPP-এর পাশে):**
+1. XAMPP Control Panel-এ **MySQL → Stop**।
+2. <https://mariadb.org/download/> থেকে **MariaDB 11.4 (বা 10.11) LTS** Windows MSI নামিয়ে ইনস্টল করো। ইনস্টলারে `root` পাসওয়ার্ড দাও, **UTF8 ডিফল্ট** টিক রাখো, পোর্ট **3306**।
+3. ইনস্টলের সাথে আসা **HeidiSQL** (বা `MySQL Client` শর্টকাট) দিয়ে ডাটাবেস বানাও:
+   `CREATE DATABASE credence_website CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`
+4. `.env`-এ পাসওয়ার্ডসহ URL: `DATABASE_URL=mysql://root:তোমার-পাসওয়ার্ড@127.0.0.1:3306/credence_website`
+5. phpMyAdmin চাইলে `C:\xampp\phpMyAdmin\config.inc.php`-এ `$cfg['Servers'][$i]['password'] = 'তোমার-পাসওয়ার্ড';` দাও (আর XAMPP-এর MySQL চালিও না, পোর্ট ৩৩০৬ ভাগাভাগি হবে)। অথবা পোর্ট বদলাতে চাইলে ইনস্টলারে `3307` দাও আর URL-এও `:3307`।
+6. পুরনো (ভুল) টেবিল থাকলে সেই ডাটাবেস মুছে নতুন করে বানাও, তারপর `npm run db:check` → `npm run seed`।
+
 ## ধাপ ১ — MySQL চালু করা (Windows: XAMPP)
 1. [XAMPP](https://www.apachefriends.org) ইনস্টল করো → Control Panel-এ **MySQL** (ও **Apache**) **Start**।
 2. ব্রাউজারে <http://localhost/phpmyadmin> খোলো।

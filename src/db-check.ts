@@ -21,6 +21,22 @@ try {
     counts.push(`  ${s.padEnd(14)} ${r.totalDocs} rows`)
   }
   console.log('\n✔ Connected. Tables exist:\n' + counts.join('\n'))
+  if (kind.startsWith('MySQL')) {
+    // The MySQL adapter needs MySQL 8.0.19+ or MariaDB 10.6+ (older servers, e.g. XAMPP's MariaDB 10.4, lack JSON_ARRAYAGG).
+    try {
+      const { sql } = await import('payload-db-mysql')
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const raw = JSON.stringify(await (payload.db as any).drizzle.execute(sql`select version() as v`))
+      const v = (raw.match(/(\d+)\.(\d+)\.(\d+)[^"]*/) || [])[0] || 'unknown'
+      const [maj, min, pat] = v.split(/[.-]/).map((x) => parseInt(x, 10))
+      const maria = /maria/i.test(raw)
+      const ok = maria ? maj > 10 || (maj === 10 && min >= 6) : maj > 8 || (maj === 8 && (min > 0 || pat >= 19))
+      console.log(`\nServer version = ${v}${maria ? ' (MariaDB)' : ' (MySQL)'}  →  ${ok ? 'OK' : '✖ TOO OLD'}`)
+      if (!ok) console.log(maria
+        ? '  This site needs MariaDB 10.6+ (XAMPP usually ships 10.4). Install a newer MariaDB/MySQL — see MYSQL_SETUP.md ("Version").'
+        : '  This site needs MySQL 8.0.19+. Install a newer MySQL — see MYSQL_SETUP.md ("Version").')
+    } catch { /* version check is optional */ }
+  }
   console.log('\nNext: npm run seed   (adds the 7 projects + the first admin), then npm run dev')
   process.exit(0)
 } catch (e) {
