@@ -4,6 +4,13 @@
 const fs = require("fs");
 const read = f => JSON.parse(fs.readFileSync(f, "utf8"));
 const site = read("data/site.json"), projects = read("data/projects.json").projects;
+// The admin stores media as "/images/x.jpg". Make every media path relative so it also works under a sub-path (e.g. GitHub Pages /Credence-website/).
+const rel = s => (typeof s === "string" ? s.replace(/^\/+/, "") : s);
+site.ogImage = rel(site.ogImage);
+projects.forEach(p => {
+  ["image", "brochure", "ogImage"].forEach(k => { if (p[k]) p[k] = rel(p[k]); });
+  (p.gallery || []).forEach(g => { g.image = rel(g.image); });
+});
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 function page(p) {
