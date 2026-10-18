@@ -140,5 +140,5 @@ footer strong{color:#fff;letter-spacing:.25em}
 .map{width:100%;height:min(60vh,460px);border:0;border-radius:20px;box-shadow:0 20px 60px rgba(30,70,120,.1)}
 .back{display:inline-block;margin-top:18px;color:var(--ink)}
 @media(max-width:900px){.facts{grid-template-columns:repeat(2,1fr)}.story{grid-template-columns:1fr}.facts div:last-child{grid-column:1/-1}}
-.phero .tower-wrap{width:min(32vw,300px);bottom:22%;right:clamp(10px,12vw,200px)}
-@media(max-width:560px){.phero .tower-wrap{width:44vw;right:-8vw;bottom:34%}}
+.phero .tower-wrap{width:min(24vw,240px);bottom:24%;right:clamp(10px,12vw,200px)}
+@media(max-width:560px){.phero .tower-wrap{width:36vw;right:-4vw;bottom:36%}}
