@@ -20,6 +20,9 @@ export const SiteSettings: GlobalConfig = {
           { name: 'phones', type: 'array', fields: [{ name: 'number', type: 'text', required: true }] },
           { name: 'whatsapp', type: 'text', admin: { description: 'e.g. 8801711292443 — shows a floating WhatsApp button' } },
         ] },
+        { label: 'Home page', fields: [
+          { name: 'heroImage', type: 'upload', relationTo: 'media', label: 'Home hero photo (replaces the illustrated tower)', admin: { description: 'Best: landscape or portrait building photo, at least 1200px wide, under ~400 KB. Leave empty to keep the illustrated tower. Remember to write the alt text in Media.' } },
+        ] },
         { label: 'SEO', fields: [
           { name: 'siteUrl', type: 'text', required: true, defaultValue: 'http://localhost:3000', admin: { description: 'Public URL, no trailing slash' } },
           { name: 'homeTitle', type: 'text', localized: true },

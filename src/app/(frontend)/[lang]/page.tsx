@@ -45,7 +45,10 @@ export default async function Home({ params }: Props) {
             <p>{t.hero.text}</p>
             <p className="from">{t.hero.from}<br /><strong>{t.hero.areas}</strong></p>
           </div>
-          <div className="tower-wrap"><Tower id="tower" hue={208} floors={16} uid="hero" /></div>
+          {s.heroImage
+            // eslint-disable-next-line @next/next/no-img-element
+            ? <div className="photo-wrap"><img src={s.heroImage.url} alt={s.heroImage.alt || s.name} /></div>
+            : <div className="tower-wrap"><Tower id="tower" hue={208} floors={16} uid="hero" /></div>}
           <div className="mist" />
           <Finder t={t.finder} areas={areas} names={projects.map((p) => p.name)} />
         </section>

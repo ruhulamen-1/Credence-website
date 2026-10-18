@@ -11,44 +11,44 @@ SET @OLD_SQL_MODE = @@SQL_MODE, SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO';
 -- careers (3 rows)
 DELETE FROM `careers`;
 INSERT INTO `careers` (`id`, `slug`, `employment_type`, `open`, `deadline`, `updated_at`, `created_at`, `_status`) VALUES
-(1, 'demo-site-engineer', 'full-time', 1, '2026-11-17 20:51:38.985', '2026-10-18 10:51:38.986', '2026-10-18 10:51:38.986', 'published'),
-(2, 'demo-sales-executive', 'full-time', 1, '2026-11-17 20:51:39.000', '2026-10-18 10:51:39.000', '2026-10-18 10:51:39.000', 'published'),
-(3, 'demo-architect-intern', 'internship', 1, '2026-11-17 20:51:39.011', '2026-10-18 10:51:39.011', '2026-10-18 10:51:39.011', 'published');
+(1, 'demo-site-engineer', 'full-time', 1, '2026-11-17 21:08:55.400', '2026-10-18 11:08:55.401', '2026-10-18 11:08:55.401', 'published'),
+(2, 'demo-sales-executive', 'full-time', 1, '2026-11-17 21:08:55.410', '2026-10-18 11:08:55.410', '2026-10-18 11:08:55.410', 'published'),
+(3, 'demo-architect-intern', 'internship', 1, '2026-11-17 21:08:55.424', '2026-10-18 11:08:55.425', '2026-10-18 11:08:55.425', 'published');
 
 -- leads (30 rows)
 DELETE FROM `leads`;
 INSERT INTO `leads` (`id`, `name`, `phone`, `email`, `message`, `kind`, `job_id`, `campaign`, `variant`, `details`, `project_id`, `page`, `status`, `assigned_to_id`, `notes`, `source_utm_source`, `source_utm_medium`, `source_utm_campaign`, `source_utm_term`, `source_utm_content`, `source_gclid`, `source_fbclid`, `source_ttclid`, `source_referrer`, `source_landing`, `duplicate_of_id`, `updated_at`, `created_at`) VALUES
-(1, 'Demo Farhana 1', '01700001000', 'demo0@example.com', 'Demo lead — sample message.', 'buyer', NULL, NULL, NULL, NULL, 10, '/buyer', 'lost', NULL, 'DEMO', 'google', 'cpc', 'brand', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.051', '2026-09-20 22:51:39.048'),
-(2, 'Demo Tanvir 2', '01700001001', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 10, '/projects/demo-business-plaza', 'new', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.060', '2026-09-27 02:51:39.059'),
-(3, 'Demo Arif 3', '01700001002', NULL, 'Demo lead — sample message.', 'career', NULL, NULL, NULL, NULL, NULL, '/career', 'new', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.069', '2026-09-20 21:51:39.068'),
-(4, 'Demo Rahim 4', '01700001003', 'demo3@example.com', 'Demo lead — sample message.', 'campaign', NULL, 'Demo Eid Offer', 'B', NULL, 8, '/campaign', 'contacted', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.077', '2026-10-01 21:51:39.075'),
-(5, 'Demo Arif 5', '01700001004', NULL, 'Demo lead — sample message.', 'landowner', NULL, NULL, NULL, NULL, NULL, '/landowner', 'visit', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://example.com/', '/', NULL, '2026-10-18 10:51:39.086', '2026-10-09 00:51:39.083'),
-(6, 'Demo Mitu 6', '01700001005', NULL, 'Demo lead — sample message.', 'landowner', NULL, NULL, NULL, NULL, NULL, '/landowner', 'contacted', NULL, 'DEMO', 'google', 'cpc', 'brand', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.092', '2026-10-11 20:51:39.092'),
-(7, 'Demo Sumon 7', '01700001006', 'demo6@example.com', 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 8, '/projects/demo-skyline-residence', 'lost', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, 'demo-fbclid', NULL, NULL, '/', NULL, '2026-10-18 10:51:39.097', '2026-10-11 18:51:39.096'),
-(8, 'Demo Karim 8', '01700001007', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 9, '/projects/demo-green-court', 'contacted', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.108', '2026-10-18 19:51:39.107'),
-(9, 'Demo Tanvir 9', '01700001008', NULL, 'Demo lead — sample message.', 'landowner', NULL, NULL, NULL, NULL, NULL, '/landowner', 'negotiation', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.117', '2026-10-04 22:51:39.116'),
-(10, 'Demo Karim 10', '01700001009', 'demo9@example.com', 'Demo lead — sample message.', 'landowner', NULL, NULL, NULL, NULL, NULL, '/landowner', 'new', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.121', '2026-10-17 22:51:39.120'),
-(11, 'Demo Shirin 11', '01700001010', NULL, 'Demo lead — sample message.', 'landowner', NULL, NULL, NULL, NULL, NULL, '/landowner', 'negotiation', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.125', '2026-10-15 01:51:39.124'),
-(12, 'Demo Imran 12', '01700001011', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 10, '/projects/demo-business-plaza', 'new', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://example.com/', '/', NULL, '2026-10-18 10:51:39.130', '2026-10-09 02:51:39.129'),
-(13, 'Demo Nasrin 13', '01700001012', 'demo12@example.com', 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 8, '/projects/demo-skyline-residence', 'negotiation', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.136', '2026-10-06 01:51:39.135'),
-(14, 'Demo Mitu 14', '01700001013', NULL, 'Demo lead — sample message.', 'campaign', NULL, 'Demo Eid Offer', 'B', NULL, 10, '/campaign', 'new', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.143', '2026-10-01 18:51:39.142'),
-(15, 'Demo Rahim 15', '01700001014', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 8, '/projects/demo-skyline-residence', 'lost', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.149', '2026-10-17 18:51:39.148'),
-(16, 'Demo Mitu 16', '01700001015', 'demo15@example.com', 'Demo lead — sample message.', 'buyer', NULL, NULL, NULL, NULL, 8, '/buyer', 'contacted', NULL, 'DEMO', 'google', 'cpc', 'brand', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.157', '2026-10-14 23:51:39.156'),
-(17, 'Demo Rahim 17', '01700001016', NULL, 'Demo lead — sample message.', 'buyer', NULL, NULL, NULL, NULL, 8, '/buyer', 'negotiation', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.166', '2026-10-17 03:51:39.165'),
-(18, 'Demo Imran 18', '01700001017', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 9, '/projects/demo-green-court', 'new', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.173', '2026-09-30 22:51:39.172'),
-(19, 'Demo Arif 19', '01700001018', 'demo18@example.com', 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 8, '/projects/demo-skyline-residence', 'lost', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://example.com/', '/', NULL, '2026-10-18 10:51:39.182', '2026-10-14 20:51:39.181'),
-(20, 'Demo Shirin 20', '01700001019', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 8, '/projects/demo-skyline-residence', 'negotiation', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.193', '2026-09-19 18:51:39.192'),
-(21, 'Demo Rahim 21', '01700001020', NULL, 'Demo lead — sample message.', 'campaign', NULL, 'Demo Eid Offer', 'A', NULL, 10, '/campaign', 'lost', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.200', '2026-09-22 01:51:39.199'),
-(22, 'Demo Shirin 22', '01700001021', 'demo21@example.com', 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 10, '/projects/demo-business-plaza', 'new', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.207', '2026-10-08 01:51:39.206'),
-(23, 'Demo Karim 23', '01700001022', NULL, 'Demo lead — sample message.', 'buyer', NULL, NULL, NULL, NULL, 10, '/buyer', 'new', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.217', '2026-09-20 19:51:39.215'),
-(24, 'Demo Mitu 24', '01700001023', NULL, 'Demo lead — sample message.', 'buyer', NULL, NULL, NULL, NULL, 9, '/buyer', 'negotiation', NULL, 'DEMO', 'google', 'cpc', 'brand', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.223', '2026-10-13 21:51:39.222'),
-(25, 'Demo Nasrin 25', '01700001024', 'demo24@example.com', 'Demo lead — sample message.', 'buyer', NULL, NULL, NULL, NULL, 9, '/buyer', 'booked', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.230', '2026-09-24 20:51:39.229');
+(1, 'Demo Farhana 1', '01700001000', 'demo0@example.com', 'Demo lead — sample message.', 'buyer', NULL, NULL, NULL, NULL, 10, '/buyer', 'lost', NULL, 'DEMO', 'google', 'cpc', 'brand', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.458', '2026-09-20 23:08:55.456'),
+(2, 'Demo Tanvir 2', '01700001001', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 10, '/projects/demo-business-plaza', 'new', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.464', '2026-09-27 03:08:55.463'),
+(3, 'Demo Arif 3', '01700001002', NULL, 'Demo lead — sample message.', 'career', NULL, NULL, NULL, NULL, NULL, '/career', 'new', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.470', '2026-09-20 22:08:55.469'),
+(4, 'Demo Rahim 4', '01700001003', 'demo3@example.com', 'Demo lead — sample message.', 'campaign', NULL, 'Demo Eid Offer', 'B', NULL, 8, '/campaign', 'contacted', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.474', '2026-10-01 22:08:55.473'),
+(5, 'Demo Arif 5', '01700001004', NULL, 'Demo lead — sample message.', 'landowner', NULL, NULL, NULL, NULL, NULL, '/landowner', 'visit', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://example.com/', '/', NULL, '2026-10-18 11:08:55.484', '2026-10-09 01:08:55.479'),
+(6, 'Demo Mitu 6', '01700001005', NULL, 'Demo lead — sample message.', 'landowner', NULL, NULL, NULL, NULL, NULL, '/landowner', 'contacted', NULL, 'DEMO', 'google', 'cpc', 'brand', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.489', '2026-10-11 21:08:55.488'),
+(7, 'Demo Sumon 7', '01700001006', 'demo6@example.com', 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 8, '/projects/demo-skyline-residence', 'lost', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, 'demo-fbclid', NULL, NULL, '/', NULL, '2026-10-18 11:08:55.495', '2026-10-11 19:08:55.493'),
+(8, 'Demo Karim 8', '01700001007', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 9, '/projects/demo-green-court', 'contacted', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.505', '2026-10-18 20:08:55.502'),
+(9, 'Demo Tanvir 9', '01700001008', NULL, 'Demo lead — sample message.', 'landowner', NULL, NULL, NULL, NULL, NULL, '/landowner', 'negotiation', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.513', '2026-10-04 23:08:55.512'),
+(10, 'Demo Karim 10', '01700001009', 'demo9@example.com', 'Demo lead — sample message.', 'landowner', NULL, NULL, NULL, NULL, NULL, '/landowner', 'new', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.518', '2026-10-17 23:08:55.517'),
+(11, 'Demo Shirin 11', '01700001010', NULL, 'Demo lead — sample message.', 'landowner', NULL, NULL, NULL, NULL, NULL, '/landowner', 'negotiation', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.522', '2026-10-15 02:08:55.521'),
+(12, 'Demo Imran 12', '01700001011', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 10, '/projects/demo-business-plaza', 'new', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://example.com/', '/', NULL, '2026-10-18 11:08:55.526', '2026-10-09 03:08:55.525'),
+(13, 'Demo Nasrin 13', '01700001012', 'demo12@example.com', 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 8, '/projects/demo-skyline-residence', 'negotiation', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.531', '2026-10-06 02:08:55.530'),
+(14, 'Demo Mitu 14', '01700001013', NULL, 'Demo lead — sample message.', 'campaign', NULL, 'Demo Eid Offer', 'B', NULL, 10, '/campaign', 'new', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.538', '2026-10-01 19:08:55.537'),
+(15, 'Demo Rahim 15', '01700001014', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 8, '/projects/demo-skyline-residence', 'lost', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.544', '2026-10-17 19:08:55.543'),
+(16, 'Demo Mitu 16', '01700001015', 'demo15@example.com', 'Demo lead — sample message.', 'buyer', NULL, NULL, NULL, NULL, 8, '/buyer', 'contacted', NULL, 'DEMO', 'google', 'cpc', 'brand', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.549', '2026-10-15 00:08:55.548'),
+(17, 'Demo Rahim 17', '01700001016', NULL, 'Demo lead — sample message.', 'buyer', NULL, NULL, NULL, NULL, 8, '/buyer', 'negotiation', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.555', '2026-10-17 04:08:55.554'),
+(18, 'Demo Imran 18', '01700001017', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 9, '/projects/demo-green-court', 'new', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.560', '2026-09-30 23:08:55.559'),
+(19, 'Demo Arif 19', '01700001018', 'demo18@example.com', 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 8, '/projects/demo-skyline-residence', 'lost', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://example.com/', '/', NULL, '2026-10-18 11:08:55.567', '2026-10-14 21:08:55.567'),
+(20, 'Demo Shirin 20', '01700001019', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 8, '/projects/demo-skyline-residence', 'negotiation', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.575', '2026-09-19 19:08:55.574'),
+(21, 'Demo Rahim 21', '01700001020', NULL, 'Demo lead — sample message.', 'campaign', NULL, 'Demo Eid Offer', 'A', NULL, 10, '/campaign', 'lost', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.580', '2026-09-22 02:08:55.579'),
+(22, 'Demo Shirin 22', '01700001021', 'demo21@example.com', 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 10, '/projects/demo-business-plaza', 'new', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.585', '2026-10-08 02:08:55.584'),
+(23, 'Demo Karim 23', '01700001022', NULL, 'Demo lead — sample message.', 'buyer', NULL, NULL, NULL, NULL, 10, '/buyer', 'new', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.590', '2026-09-20 20:08:55.590'),
+(24, 'Demo Mitu 24', '01700001023', NULL, 'Demo lead — sample message.', 'buyer', NULL, NULL, NULL, NULL, 9, '/buyer', 'negotiation', NULL, 'DEMO', 'google', 'cpc', 'brand', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.596', '2026-10-13 22:08:55.595'),
+(25, 'Demo Nasrin 25', '01700001024', 'demo24@example.com', 'Demo lead — sample message.', 'buyer', NULL, NULL, NULL, NULL, 9, '/buyer', 'booked', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.602', '2026-09-24 21:08:55.601');
 INSERT INTO `leads` (`id`, `name`, `phone`, `email`, `message`, `kind`, `job_id`, `campaign`, `variant`, `details`, `project_id`, `page`, `status`, `assigned_to_id`, `notes`, `source_utm_source`, `source_utm_medium`, `source_utm_campaign`, `source_utm_term`, `source_utm_content`, `source_gclid`, `source_fbclid`, `source_ttclid`, `source_referrer`, `source_landing`, `duplicate_of_id`, `updated_at`, `created_at`) VALUES
-(26, 'Demo Farhana 26', '01700001025', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 10, '/projects/demo-business-plaza', 'lost', NULL, 'DEMO', 'google', 'cpc', 'brand', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.237', '2026-10-01 03:51:39.236'),
-(27, 'Demo Imran 27', '01700001026', NULL, 'Demo lead — sample message.', 'career', NULL, NULL, NULL, NULL, NULL, '/career', 'contacted', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.244', '2026-09-25 02:51:39.243'),
-(28, 'Demo Arif 28', '01700001027', 'demo27@example.com', 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 9, '/projects/demo-green-court', 'contacted', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.250', '2026-10-15 00:51:39.249'),
-(29, 'Demo Rahim 29', '01700001028', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 10, '/projects/demo-business-plaza', 'new', NULL, 'DEMO', 'google', 'cpc', 'brand', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.258', '2026-09-29 03:51:39.257'),
-(30, 'Demo Arif 30', '01700001029', NULL, 'Demo lead — sample message.', 'career', NULL, NULL, NULL, NULL, NULL, '/career', 'new', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 10:51:39.266', '2026-10-16 02:51:39.265');
+(26, 'Demo Farhana 26', '01700001025', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 10, '/projects/demo-business-plaza', 'lost', NULL, 'DEMO', 'google', 'cpc', 'brand', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.609', '2026-10-01 04:08:55.608'),
+(27, 'Demo Imran 27', '01700001026', NULL, 'Demo lead — sample message.', 'career', NULL, NULL, NULL, NULL, NULL, '/career', 'contacted', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.619', '2026-09-25 03:08:55.617'),
+(28, 'Demo Arif 28', '01700001027', 'demo27@example.com', 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 9, '/projects/demo-green-court', 'contacted', NULL, 'DEMO', 'facebook', 'cpc', 'eid-offer', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.624', '2026-10-15 01:08:55.622'),
+(29, 'Demo Rahim 29', '01700001028', NULL, 'Demo lead — sample message.', 'enquiry', NULL, NULL, NULL, NULL, 10, '/projects/demo-business-plaza', 'new', NULL, 'DEMO', 'google', 'cpc', 'brand', NULL, NULL, NULL, NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.632', '2026-09-29 04:08:55.630'),
+(30, 'Demo Arif 30', '01700001029', NULL, 'Demo lead — sample message.', 'career', NULL, NULL, NULL, NULL, NULL, '/career', 'new', NULL, 'DEMO', NULL, NULL, NULL, NULL, NULL, 'demo-gclid', NULL, NULL, NULL, '/', NULL, '2026-10-18 11:08:55.640', '2026-10-16 03:08:55.639');
 
 -- media (0 rows)
 DELETE FROM `media`;
@@ -56,40 +56,40 @@ DELETE FROM `media`;
 -- posts (4 rows)
 DELETE FROM `posts`;
 INSERT INTO `posts` (`id`, `slug`, `kind`, `published_at`, `author`, `event_date`, `cover_id`, `related_project_id`, `updated_at`, `created_at`, `_status`) VALUES
-(1, 'demo-buying-guide', 'blog', '2026-10-09 20:51:38.836', 'Demo Editor', NULL, NULL, NULL, '2026-10-18 10:51:38.926', '2026-10-18 10:51:38.844', 'published'),
-(2, 'demo-interior-trends', 'blog', '2026-09-28 20:51:38.836', 'Demo Editor', NULL, NULL, NULL, '2026-10-18 10:51:38.864', '2026-10-18 10:51:38.863', 'published'),
-(3, 'demo-handover-news', 'news', '2026-10-15 20:51:38.836', 'Demo Editor', NULL, NULL, NULL, '2026-10-18 10:51:38.881', '2026-10-18 10:51:38.881', 'published'),
-(4, 'demo-open-house', 'event', '2026-10-17 20:51:38.836', 'Demo Editor', '2026-10-30 10:51:38.836', NULL, 8, '2026-10-18 10:51:38.905', '2026-10-18 10:51:38.905', 'published');
+(1, 'demo-buying-guide', 'blog', '2026-10-09 21:08:55.290', 'Demo Editor', NULL, NULL, NULL, '2026-10-18 11:08:55.354', '2026-10-18 11:08:55.293', 'published'),
+(2, 'demo-interior-trends', 'blog', '2026-09-28 21:08:55.290', 'Demo Editor', NULL, NULL, NULL, '2026-10-18 11:08:55.311', '2026-10-18 11:08:55.311', 'published'),
+(3, 'demo-handover-news', 'news', '2026-10-15 21:08:55.290', 'Demo Editor', NULL, NULL, NULL, '2026-10-18 11:08:55.320', '2026-10-18 11:08:55.320', 'published'),
+(4, 'demo-open-house', 'event', '2026-10-17 21:08:55.290', 'Demo Editor', '2026-10-30 11:08:55.290', NULL, 8, '2026-10-18 11:08:55.331', '2026-10-18 11:08:55.331', 'published');
 
 -- projects (10 rows)
 DELETE FROM `projects`;
 INSERT INTO `projects` (`id`, `name`, `slug`, `status`, `type`, `order`, `area`, `map_query`, `image_id`, `hue`, `floors`, `brochure_id`, `og_image_id`, `updated_at`, `created_at`, `_status`) VALUES
-(1, 'Arkology', 'arkology', 'Ongoing', 'Apartment', 20, 'Gulshan', 'Road 13, Block SW(D), Gulshan 1, Dhaka', NULL, 340, 18, NULL, NULL, '2026-10-18 10:51:34.579', '2026-10-18 10:51:34.579', 'published'),
-(2, 'Park Snowflake', 'park-snowflake', 'Ongoing', 'Apartment', 30, 'Dhanmondi', 'Kalabagan, North Dhanmondi, Dhaka', NULL, 208, 16, NULL, NULL, '2026-10-18 10:51:34.627', '2026-10-18 10:51:34.627', 'published'),
-(3, 'Bella Vista', 'bella-vista', 'Ongoing', 'Apartment', 40, 'Dhanmondi', 'Road 9/A, Dhanmondi, Dhaka', NULL, 28, 16, NULL, NULL, '2026-10-18 10:51:34.656', '2026-10-18 10:51:34.656', 'published'),
-(4, 'Helena Sparta', 'helena-sparta', 'Ongoing', 'Apartment', 50, 'Banani', 'Road 7, Block G, Banani, Dhaka', NULL, 190, 16, NULL, NULL, '2026-10-18 10:51:34.674', '2026-10-18 10:51:34.674', 'published'),
-(5, 'Paramount Residences', 'paramount-residences', 'Completed', 'Apartment', 60, 'Dhanmondi', 'Dhaka', NULL, 240, 16, NULL, NULL, '2026-10-18 10:51:34.699', '2026-10-18 10:51:34.699', 'published'),
-(6, 'Platinum', 'platinum', 'Completed', 'Apartment', 70, 'Dhanmondi', 'Dhaka', NULL, 160, 16, NULL, NULL, '2026-10-18 10:51:34.720', '2026-10-18 10:51:34.720', 'published'),
-(7, 'Cynosure', 'cynosure', 'Completed', 'Apartment', 80, 'Dhanmondi', 'Dhaka', NULL, 20, 16, NULL, NULL, '2026-10-18 10:51:34.740', '2026-10-18 10:51:34.740', 'published'),
-(8, 'Demo Skyline Residence', 'demo-skyline-residence', 'Upcoming', 'Apartment', 910, 'Uttara', 'Sector 7, Uttara, Dhaka (sample address)', NULL, 200, 14, NULL, NULL, '2026-10-18 10:51:38.782', '2026-10-18 10:51:38.643', 'published'),
-(9, 'Demo Green Court', 'demo-green-court', 'Ongoing', 'Apartment', 920, 'Bashundhara', 'Block D, Bashundhara R/A, Dhaka (sample address)', NULL, 150, 10, NULL, NULL, '2026-10-18 10:51:38.705', '2026-10-18 10:51:38.704', 'published'),
-(10, 'Demo Business Plaza', 'demo-business-plaza', 'Completed', 'Commercial', 930, 'Gulshan', 'Gulshan Avenue, Dhaka (sample address)', NULL, 270, 16, NULL, NULL, '2026-10-18 10:51:38.737', '2026-10-18 10:51:38.737', 'published');
+(1, 'Arkology', 'arkology', 'Ongoing', 'Apartment', 20, 'Gulshan', 'Road 13, Block SW(D), Gulshan 1, Dhaka', NULL, 340, 18, NULL, NULL, '2026-10-18 11:08:50.552', '2026-10-18 11:08:50.551', 'published'),
+(2, 'Park Snowflake', 'park-snowflake', 'Ongoing', 'Apartment', 30, 'Dhanmondi', 'Kalabagan, North Dhanmondi, Dhaka', NULL, 208, 16, NULL, NULL, '2026-10-18 11:08:50.586', '2026-10-18 11:08:50.586', 'published'),
+(3, 'Bella Vista', 'bella-vista', 'Ongoing', 'Apartment', 40, 'Dhanmondi', 'Road 9/A, Dhanmondi, Dhaka', NULL, 28, 16, NULL, NULL, '2026-10-18 11:08:50.612', '2026-10-18 11:08:50.611', 'published'),
+(4, 'Helena Sparta', 'helena-sparta', 'Ongoing', 'Apartment', 50, 'Banani', 'Road 7, Block G, Banani, Dhaka', NULL, 190, 16, NULL, NULL, '2026-10-18 11:08:50.628', '2026-10-18 11:08:50.628', 'published'),
+(5, 'Paramount Residences', 'paramount-residences', 'Completed', 'Apartment', 60, 'Dhanmondi', 'Dhaka', NULL, 240, 16, NULL, NULL, '2026-10-18 11:08:50.650', '2026-10-18 11:08:50.650', 'published'),
+(6, 'Platinum', 'platinum', 'Completed', 'Apartment', 70, 'Dhanmondi', 'Dhaka', NULL, 160, 16, NULL, NULL, '2026-10-18 11:08:50.664', '2026-10-18 11:08:50.664', 'published'),
+(7, 'Cynosure', 'cynosure', 'Completed', 'Apartment', 80, 'Dhanmondi', 'Dhaka', NULL, 20, 16, NULL, NULL, '2026-10-18 11:08:50.678', '2026-10-18 11:08:50.678', 'published'),
+(8, 'Demo Skyline Residence', 'demo-skyline-residence', 'Upcoming', 'Apartment', 910, 'Uttara', 'Sector 7, Uttara, Dhaka (sample address)', NULL, 200, 14, NULL, NULL, '2026-10-18 11:08:55.231', '2026-10-18 11:08:55.100', 'published'),
+(9, 'Demo Green Court', 'demo-green-court', 'Ongoing', 'Apartment', 920, 'Bashundhara', 'Block D, Bashundhara R/A, Dhaka (sample address)', NULL, 150, 10, NULL, NULL, '2026-10-18 11:08:55.143', '2026-10-18 11:08:55.143', 'published'),
+(10, 'Demo Business Plaza', 'demo-business-plaza', 'Completed', 'Commercial', 930, 'Gulshan', 'Gulshan Avenue, Dhaka (sample address)', NULL, 270, 16, NULL, NULL, '2026-10-18 11:08:55.176', '2026-10-18 11:08:55.176', 'published');
 
 -- redirects (2 rows)
 DELETE FROM `redirects`;
 INSERT INTO `redirects` (`id`, `from`, `to`, `type`, `updated_at`, `created_at`) VALUES
-(1, '/demo-old-project-page', '/projects/demo-skyline-residence', '301', '2026-10-18 10:51:39.042', '2026-10-18 10:51:39.042'),
-(2, '/demo-old-blog', '/blog', '302', '2026-10-18 10:51:39.045', '2026-10-18 10:51:39.045');
+(1, '/demo-old-project-page', '/projects/demo-skyline-residence', '301', '2026-10-18 11:08:55.451', '2026-10-18 11:08:55.451'),
+(2, '/demo-old-blog', '/blog', '302', '2026-10-18 11:08:55.454', '2026-10-18 11:08:55.454');
 
 -- team (6 rows)
 DELETE FROM `team`;
 INSERT INTO `team` (`id`, `group`, `order`, `photo_id`, `updated_at`, `created_at`) VALUES
-(1, 'management', 901, NULL, '2026-10-18 10:51:38.954', '2026-10-18 10:51:38.954'),
-(2, 'management', 902, NULL, '2026-10-18 10:51:38.960', '2026-10-18 10:51:38.960'),
-(3, 'team', 903, NULL, '2026-10-18 10:51:38.965', '2026-10-18 10:51:38.965'),
-(4, 'team', 904, NULL, '2026-10-18 10:51:38.970', '2026-10-18 10:51:38.970'),
-(5, 'team', 905, NULL, '2026-10-18 10:51:38.975', '2026-10-18 10:51:38.975'),
-(6, 'team', 906, NULL, '2026-10-18 10:51:38.980', '2026-10-18 10:51:38.980');
+(1, 'management', 901, NULL, '2026-10-18 11:08:55.373', '2026-10-18 11:08:55.373'),
+(2, 'management', 902, NULL, '2026-10-18 11:08:55.378', '2026-10-18 11:08:55.378'),
+(3, 'team', 903, NULL, '2026-10-18 11:08:55.382', '2026-10-18 11:08:55.382'),
+(4, 'team', 904, NULL, '2026-10-18 11:08:55.386', '2026-10-18 11:08:55.386'),
+(5, 'team', 905, NULL, '2026-10-18 11:08:55.392', '2026-10-18 11:08:55.392'),
+(6, 'team', 906, NULL, '2026-10-18 11:08:55.396', '2026-10-18 11:08:55.396');
 
 -- careers_locales (3 rows)
 DELETE FROM `careers_locales`;
@@ -101,14 +101,14 @@ INSERT INTO `careers_locales` (`title`, `department`, `location`, `description`,
 -- landing_pages (1 rows)
 DELETE FROM `landing_pages`;
 INSERT INTO `landing_pages` (`id`, `title`, `slug`, `language`, `noindex`, `project_id`, `image_id`, `headline`, `subheading`, `button_text`, `phone`, `ab_test`, `headline_b`, `button_text_b`, `updated_at`, `created_at`, `_status`) VALUES
-(1, 'Demo Eid Offer', 'demo-eid-offer', 'en', 1, 8, NULL, 'Book your dream home this Eid', 'Sample campaign page for testing the form, tracking and A/B headline.', 'Request a call back', NULL, 1, 'Eid special: easy instalments on selected flats', 'Get the offer', '2026-10-18 10:51:39.027', '2026-10-18 10:51:39.026', 'published');
+(1, 'Demo Eid Offer', 'demo-eid-offer', 'en', 1, 8, NULL, 'Book your dream home this Eid', 'Sample campaign page for testing the form, tracking and A/B headline.', 'Request a call back', NULL, 1, 'Eid special: easy instalments on selected flats', 'Get the offer', '2026-10-18 11:08:55.436', '2026-10-18 11:08:55.436', 'published');
 
 -- landing_pages_bullets (3 rows)
 DELETE FROM `landing_pages_bullets`;
 INSERT INTO `landing_pages_bullets` (`_order`, `_parent_id`, `id`, `text`) VALUES
-(1, 1, '6ad4a4bbe8bfa406aa46d649', 'Ready and ongoing flats'),
-(2, 1, '6ad4a4bbe8bfa406aa46d64a', 'Flexible payment plan (sample)'),
-(3, 1, '6ad4a4bbe8bfa406aa46d64b', 'Free site visit');
+(1, 1, '6ad4a8c7c8e5bb03285f9fd1', 'Ready and ongoing flats'),
+(2, 1, '6ad4a8c7c8e5bb03285f9fd2', 'Flexible payment plan (sample)'),
+(3, 1, '6ad4a8c7c8e5bb03285f9fd3', 'Free site visit');
 
 -- posts_locales (5 rows)
 DELETE FROM `posts_locales`;
@@ -122,20 +122,20 @@ INSERT INTO `posts_locales` (`title`, `event_location`, `excerpt`, `body`, `seo_
 -- projects_facts (14 rows)
 DELETE FROM `projects_facts`;
 INSERT INTO `projects_facts` (`_order`, `_parent_id`, `_locale`, `id`, `v`, `l`) VALUES
-(1, 1, 'en', '6ad4a4b6918464067354b2e2', '15', 'Storeys (B2+B1+G+M+14)'),
-(2, 1, 'en', '6ad4a4b6918464067354b2e3', '1', 'Apartment per floor'),
-(3, 1, 'en', '6ad4a4b6918464067354b2e4', '3,366', 'sq. ft. each (approx.)'),
-(4, 1, 'en', '6ad4a4b6918464067354b2e5', '24', 'Car parking spaces'),
-(5, 1, 'en', '6ad4a4b6918464067354b2e6', 'Aug 2029', 'Expected handover'),
-(1, 9, 'en', '6ad4a4bae8bfa406aa46d63f', '9', 'Storeys'),
-(2, 9, 'en', '6ad4a4bae8bfa406aa46d640', '36', 'Apartments'),
-(3, 9, 'en', '6ad4a4bae8bfa406aa46d641', '1,350', 'sq. ft. (sample)'),
-(1, 10, 'en', '6ad4a4bae8bfa406aa46d645', '16', 'Floors'),
-(2, 10, 'en', '6ad4a4bae8bfa406aa46d646', '2019', 'Handed over'),
-(1, 8, 'en', '6ad4a4bae8bfa406aa46d634', '12', 'Storeys'),
-(2, 8, 'en', '6ad4a4bae8bfa406aa46d635', '2', 'Apartments per floor'),
-(3, 8, 'en', '6ad4a4bae8bfa406aa46d636', '1,850', 'sq. ft. (sample)'),
-(4, 8, 'en', '6ad4a4bae8bfa406aa46d637', '2028', 'Expected handover');
+(1, 1, 'en', '6ad4a8c241c1cd02f23ce54a', '15', 'Storeys (B2+B1+G+M+14)'),
+(2, 1, 'en', '6ad4a8c241c1cd02f23ce54b', '1', 'Apartment per floor'),
+(3, 1, 'en', '6ad4a8c241c1cd02f23ce54c', '3,366', 'sq. ft. each (approx.)'),
+(4, 1, 'en', '6ad4a8c241c1cd02f23ce54d', '24', 'Car parking spaces'),
+(5, 1, 'en', '6ad4a8c241c1cd02f23ce54e', 'Aug 2029', 'Expected handover'),
+(1, 9, 'en', '6ad4a8c7c8e5bb03285f9fc7', '9', 'Storeys'),
+(2, 9, 'en', '6ad4a8c7c8e5bb03285f9fc8', '36', 'Apartments'),
+(3, 9, 'en', '6ad4a8c7c8e5bb03285f9fc9', '1,350', 'sq. ft. (sample)'),
+(1, 10, 'en', '6ad4a8c7c8e5bb03285f9fcd', '16', 'Floors'),
+(2, 10, 'en', '6ad4a8c7c8e5bb03285f9fce', '2019', 'Handed over'),
+(1, 8, 'en', '6ad4a8c7c8e5bb03285f9fbc', '12', 'Storeys'),
+(2, 8, 'en', '6ad4a8c7c8e5bb03285f9fbd', '2', 'Apartments per floor'),
+(3, 8, 'en', '6ad4a8c7c8e5bb03285f9fbe', '1,850', 'sq. ft. (sample)'),
+(4, 8, 'en', '6ad4a8c7c8e5bb03285f9fbf', '2028', 'Expected handover');
 
 -- projects_gallery (0 rows)
 DELETE FROM `projects_gallery`;
@@ -158,43 +158,43 @@ INSERT INTO `projects_locales` (`addr`, `tagline`, `story_title`, `seo_title`, `
 -- projects_spec (21 rows)
 DELETE FROM `projects_spec`;
 INSERT INTO `projects_spec` (`_order`, `_parent_id`, `_locale`, `id`, `k`, `v`) VALUES
-(1, 1, 'en', '6ad4a4b6918464067354b2ea', 'Address', 'Plot-1/B, Road-13, Block-SW(D), Gulshan-1, Dhaka'),
-(2, 1, 'en', '6ad4a4b6918464067354b2eb', 'Land area', '10.53 Katha'),
-(3, 1, 'en', '6ad4a4b6918464067354b2ec', 'Height', '(B2+B1+G+M+14) 15 storied'),
-(4, 1, 'en', '6ad4a4b6918464067354b2ed', 'Building type', 'Residential'),
-(5, 1, 'en', '6ad4a4b6918464067354b2ee', 'Facing', 'North'),
-(6, 1, 'en', '6ad4a4b6918464067354b2ef', 'Number of apartments', '14'),
-(7, 1, 'en', '6ad4a4b6918464067354b2f0', 'Units per floor', '1'),
-(8, 1, 'en', '6ad4a4b6918464067354b2f1', 'Size of each apartment', 'Type-A: 3,366 sq. ft. (approx.) + planter 27 sq. ft. (approx.)'),
-(9, 1, 'en', '6ad4a4b6918464067354b2f2', 'Car parking', '24'),
-(10, 1, 'en', '6ad4a4b6918464067354b2f3', 'Handover date', 'August, 2029'),
-(1, 2, 'en', '6ad4a4b6918464067354b2f4', 'Address', 'Plot-72, Kalabagan, North Dhanmondi, Dhaka'),
-(1, 3, 'en', '6ad4a4b6918464067354b2f5', 'Address', 'Plot-92, Road-9/A, Dhanmondi, Dhaka'),
-(1, 4, 'en', '6ad4a4b6918464067354b2f6', 'Address', 'Plot-39, Road-07, Block-G, Banani, Dhaka'),
-(1, 9, 'en', '6ad4a4bae8bfa406aa46d643', 'Building type', 'Residential'),
-(2, 9, 'en', '6ad4a4bae8bfa406aa46d644', 'Facing', 'East'),
-(1, 10, 'en', '6ad4a4bae8bfa406aa46d648', 'Building type', 'Commercial'),
-(1, 8, 'en', '6ad4a4bae8bfa406aa46d63a', 'Land area', '8 Katha (sample)'),
-(2, 8, 'en', '6ad4a4bae8bfa406aa46d63b', 'Building type', 'Residential'),
-(3, 8, 'en', '6ad4a4bae8bfa406aa46d63c', 'Facing', 'South'),
-(4, 8, 'en', '6ad4a4bae8bfa406aa46d63d', 'Car parking', '20'),
-(5, 8, 'en', '6ad4a4bae8bfa406aa46d63e', 'Handover', 'December 2028');
+(1, 1, 'en', '6ad4a8c241c1cd02f23ce552', 'Address', 'Plot-1/B, Road-13, Block-SW(D), Gulshan-1, Dhaka'),
+(2, 1, 'en', '6ad4a8c241c1cd02f23ce553', 'Land area', '10.53 Katha'),
+(3, 1, 'en', '6ad4a8c241c1cd02f23ce554', 'Height', '(B2+B1+G+M+14) 15 storied'),
+(4, 1, 'en', '6ad4a8c241c1cd02f23ce555', 'Building type', 'Residential'),
+(5, 1, 'en', '6ad4a8c241c1cd02f23ce556', 'Facing', 'North'),
+(6, 1, 'en', '6ad4a8c241c1cd02f23ce557', 'Number of apartments', '14'),
+(7, 1, 'en', '6ad4a8c241c1cd02f23ce558', 'Units per floor', '1'),
+(8, 1, 'en', '6ad4a8c241c1cd02f23ce559', 'Size of each apartment', 'Type-A: 3,366 sq. ft. (approx.) + planter 27 sq. ft. (approx.)'),
+(9, 1, 'en', '6ad4a8c241c1cd02f23ce55a', 'Car parking', '24'),
+(10, 1, 'en', '6ad4a8c241c1cd02f23ce55b', 'Handover date', 'August, 2029'),
+(1, 2, 'en', '6ad4a8c241c1cd02f23ce55c', 'Address', 'Plot-72, Kalabagan, North Dhanmondi, Dhaka'),
+(1, 3, 'en', '6ad4a8c241c1cd02f23ce55d', 'Address', 'Plot-92, Road-9/A, Dhanmondi, Dhaka'),
+(1, 4, 'en', '6ad4a8c241c1cd02f23ce55e', 'Address', 'Plot-39, Road-07, Block-G, Banani, Dhaka'),
+(1, 9, 'en', '6ad4a8c7c8e5bb03285f9fcb', 'Building type', 'Residential'),
+(2, 9, 'en', '6ad4a8c7c8e5bb03285f9fcc', 'Facing', 'East'),
+(1, 10, 'en', '6ad4a8c7c8e5bb03285f9fd0', 'Building type', 'Commercial'),
+(1, 8, 'en', '6ad4a8c7c8e5bb03285f9fc2', 'Land area', '8 Katha (sample)'),
+(2, 8, 'en', '6ad4a8c7c8e5bb03285f9fc3', 'Building type', 'Residential'),
+(3, 8, 'en', '6ad4a8c7c8e5bb03285f9fc4', 'Facing', 'South'),
+(4, 8, 'en', '6ad4a8c7c8e5bb03285f9fc5', 'Car parking', '20'),
+(5, 8, 'en', '6ad4a8c7c8e5bb03285f9fc6', 'Handover', 'December 2028');
 
 -- projects_story (7 rows)
 DELETE FROM `projects_story`;
 INSERT INTO `projects_story` (`_order`, `_parent_id`, `_locale`, `id`, `paragraph`) VALUES
-(1, 1, 'en', '6ad4a4b6918464067354b2e7', 'Credence Arkology by Credence Housing Ltd. is an exclusive residential project beside Gulshan Lake in Gulshan‑1, Dhaka. Designed for those who value luxury, privacy, spaciousness and a peaceful lifestyle, it combines the beauty of nature with the convenience of modern city living.'),
-(2, 1, 'en', '6ad4a4b6918464067354b2e8', 'Built on 10.53 kathas of land, this 15‑storey building features only one apartment per floor. Each apartment offers approximately 3,366 sq. ft. of living space plus an approximately 27 sq. ft. planter area. With 14 apartments and 24 car parking spaces, the project is planned for comfortable, spacious family living.'),
-(3, 1, 'en', '6ad4a4b6918464067354b2e9', 'Surrounded by lush greenery and refreshing lake views, Arkology offers a serene environment away from the city’s bustle, while shopping malls, fine dining and business districts stay within easy reach.'),
-(1, 9, 'en', '6ad4a4bae8bfa406aa46d642', 'Another sample project so the project grid, filters and location chips have more than one entry.'),
-(1, 10, 'en', '6ad4a4bae8bfa406aa46d647', 'Sample commercial project.'),
-(1, 8, 'en', '6ad4a4bae8bfa406aa46d638', 'This is sample text for a demo project. Replace it with the real description before launch.'),
-(2, 8, 'en', '6ad4a4bae8bfa406aa46d639', 'Use this project to check how long text, the facts strip and the specification table look on desktop and mobile.');
+(1, 1, 'en', '6ad4a8c241c1cd02f23ce54f', 'Credence Arkology by Credence Housing Ltd. is an exclusive residential project beside Gulshan Lake in Gulshan‑1, Dhaka. Designed for those who value luxury, privacy, spaciousness and a peaceful lifestyle, it combines the beauty of nature with the convenience of modern city living.'),
+(2, 1, 'en', '6ad4a8c241c1cd02f23ce550', 'Built on 10.53 kathas of land, this 15‑storey building features only one apartment per floor. Each apartment offers approximately 3,366 sq. ft. of living space plus an approximately 27 sq. ft. planter area. With 14 apartments and 24 car parking spaces, the project is planned for comfortable, spacious family living.'),
+(3, 1, 'en', '6ad4a8c241c1cd02f23ce551', 'Surrounded by lush greenery and refreshing lake views, Arkology offers a serene environment away from the city’s bustle, while shopping malls, fine dining and business districts stay within easy reach.'),
+(1, 9, 'en', '6ad4a8c7c8e5bb03285f9fca', 'Another sample project so the project grid, filters and location chips have more than one entry.'),
+(1, 10, 'en', '6ad4a8c7c8e5bb03285f9fcf', 'Sample commercial project.'),
+(1, 8, 'en', '6ad4a8c7c8e5bb03285f9fc0', 'This is sample text for a demo project. Replace it with the real description before launch.'),
+(2, 8, 'en', '6ad4a8c7c8e5bb03285f9fc1', 'Use this project to check how long text, the facts strip and the specification table look on desktop and mobile.');
 
 -- site_settings (1 rows)
 DELETE FROM `site_settings`;
-INSERT INTO `site_settings` (`id`, `name`, `email`, `hotline`, `whatsapp`, `site_url`, `og_image_id`, `consent_required`, `tracking_gtm`, `tracking_ga4`, `tracking_meta_pixel`, `tracking_tiktok_pixel`, `notify_email`, `updated_at`, `created_at`) VALUES
-(1, 'Credence Housing Limited', 'info@credencehousinglimited.com', '16769', '', 'http://localhost:3000', NULL, 1, '', '', '', '', NULL, '2026-10-18 10:51:34.554', '2026-10-18 10:51:34.554');
+INSERT INTO `site_settings` (`id`, `name`, `email`, `hotline`, `whatsapp`, `hero_image_id`, `site_url`, `og_image_id`, `consent_required`, `tracking_gtm`, `tracking_ga4`, `tracking_meta_pixel`, `tracking_tiktok_pixel`, `notify_email`, `updated_at`, `created_at`) VALUES
+(1, 'Credence Housing Limited', 'info@credencehousinglimited.com', '16769', '', NULL, 'http://localhost:3000', NULL, 1, '', '', '', '', NULL, '2026-10-18 11:08:50.523', '2026-10-18 11:08:50.523');
 
 -- site_settings_locales (1 rows)
 DELETE FROM `site_settings_locales`;
@@ -204,8 +204,8 @@ INSERT INTO `site_settings_locales` (`address`, `home_title`, `home_description`
 -- site_settings_phones (2 rows)
 DELETE FROM `site_settings_phones`;
 INSERT INTO `site_settings_phones` (`_order`, `_parent_id`, `id`, `number`) VALUES
-(1, 1, '6ad4a4b6918464067354b2e0', '+880241021375'),
-(2, 1, '6ad4a4b6918464067354b2e1', '+880241021378');
+(1, 1, '6ad4a8c241c1cd02f23ce548', '+880241021375'),
+(2, 1, '6ad4a8c241c1cd02f23ce549', '+880241021378');
 
 -- team_locales (6 rows)
 DELETE FROM `team_locales`;

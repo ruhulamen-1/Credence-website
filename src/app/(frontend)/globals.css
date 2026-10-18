@@ -243,3 +243,6 @@ html[lang=bn] .intro h1{letter-spacing:.08em}
 @media(max-width:900px){.two-col,.lp-grid{grid-template-columns:1fr}}
 html[lang=bn] .menu-btn,html[lang=bn] .nav-cta{font-size:14px;font-weight:500}
 html[lang=bn] .tag,html[lang=bn] dt,html[lang=bn] .crumbs{letter-spacing:.02em;text-transform:none}
+
+/* home hero with an uploaded photo */
+@media(max-width:900px){.hero:not(.phero) .photo-wrap{order:1}.hero:not(.phero) .finder{order:2}}

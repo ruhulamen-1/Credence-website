@@ -1015,6 +1015,10 @@ export interface SiteSetting {
    */
   whatsapp?: string | null;
   /**
+   * Best: landscape or portrait building photo, at least 1200px wide, under ~400 KB. Leave empty to keep the illustrated tower. Remember to write the alt text in Media.
+   */
+  heroImage?: (number | null) | Media;
+  /**
    * Public URL, no trailing slash
    */
   siteUrl: string;
@@ -1051,6 +1055,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         id?: T;
       };
   whatsapp?: T;
+  heroImage?: T;
   siteUrl?: T;
   homeTitle?: T;
   homeDescription?: T;

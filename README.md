@@ -57,6 +57,12 @@ Save করলেই সাইটে সাথে সাথে বদলে য�
 ## ২খ. Shared hosting (cPanel + MySQL/phpMyAdmin) এ লাইভ
 হোস্টিংয়ে Node.js না থাকলে: লোকালে কাজ করে `npm run export:shared -- --site-url=https://ডোমেইন.com` চালাও, `dist-shared/` আপলোড করো; ফর্মের লিড হোস্টিংয়ের MySQL-এ জমে, phpMyAdmin-এ দেখা যায়। সম্পূর্ণ গাইড: [`SHARED_HOSTING.md`](SHARED_HOSTING.md)।
 
+## ৩ক. হোম পেজের হিরো ছবি বদলানো
+Admin → **Site settings, SEO & tracking** → **Home page** ট্যাব → **Home hero photo** → ছবি আপলোড/বাছাই → **Save**।
+- ছবি দিলে হোমের হিরোতে আঁকা টাওয়ারের বদলে ওই ছবি আসে। খালি রাখলে টাওয়ারই থাকে।
+- ছবি: `.jpg`/`.webp`, কমপক্ষে ১২০০px চওড়া, ~৪০০ KB-এর নিচে। **Media**-তে alt text (যেমন "Credence tower at sunrise") লিখে দাও।
+- ছবি আপলোডে ডান পাশের "Upload new" দিয়ে Media-তে যোগ হয়; পরে ছবি বদলাতে একই জায়গায় নতুনটা বাছো।
+
 ## ৩. ছবি বদলানো
 Admin → **Projects** → প্রজেক্ট → **Look** ট্যাব → **Cover photo** আপলোড → Save। তখন card ও project page-এ আঁকা টাওয়ারের বদলে ছবি আসে। Alt text লিখো। ছবি 1600px-এর নিচে, ~300KB রাখা ভালো।
 
