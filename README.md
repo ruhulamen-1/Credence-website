@@ -24,6 +24,8 @@ npm run dev
 
 > **সাইট/অ্যাডমিন ফাঁকা বা বাটন কাজ করছে না?** ব্রাউজারে `http://localhost:3000` দিয়ে খোলো (`192.168…` ঠিকানা দিয়ে নয়)। ডাটাবেস সংযোগ যাচাই: `npm run db:check`।
 
+**ডেমো ডেটা চাই?** `npm run seed:demo` (৩০টা লিডসহ নমুনা কনটেন্ট) — বা phpMyAdmin-এ `demo-data/credence-demo-data.sql` Import। মুছতে: `npm run seed:demo -- --remove`। দেখো [`demo-data/README.md`](demo-data/README.md)।
+
 ## ২. Admin দিয়ে কী করা যায়
 | মেনু | কাজ |
 |---|---|

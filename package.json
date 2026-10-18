@@ -16,7 +16,10 @@
     "migrate": "cross-env NODE_OPTIONS=--no-deprecation payload migrate",
     "ci": "payload migrate && npm run build",
     "export:shared": "tsx --env-file=.env src/export-shared.ts",
-    "db:check": "tsx --env-file=.env src/db-check.ts"
+    "db:check": "tsx --env-file=.env src/db-check.ts",
+    "seed:demo": "tsx --env-file=.env src/seed-demo.ts",
+    "create-admin": "tsx --env-file=.env src/create-admin.ts",
+    "export:demo-sql": "tsx --env-file=.env src/export-demo-sql.ts"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.91.0",

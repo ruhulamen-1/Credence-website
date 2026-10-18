@@ -3,10 +3,11 @@ import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
    CREATE TYPE "public"."_locales" AS ENUM('en', 'bn');
-  CREATE TYPE "public"."enum_projects_status" AS ENUM('draft', 'published');
+  CREATE TYPE "public"."enum_projects_stage" AS ENUM('Ongoing', 'Completed', 'Upcoming');
   CREATE TYPE "public"."enum_projects_type" AS ENUM('Apartment', 'Commercial');
-  CREATE TYPE "public"."enum__projects_v_version_status" AS ENUM('draft', 'published');
+  CREATE TYPE "public"."enum_projects_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__projects_v_version_type" AS ENUM('Apartment', 'Commercial');
+  CREATE TYPE "public"."enum__projects_v_version_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__projects_v_published_locale" AS ENUM('en', 'bn');
   CREATE TYPE "public"."enum_posts_kind" AS ENUM('blog', 'news', 'event');
   CREATE TYPE "public"."enum_posts_status" AS ENUM('draft', 'published');
@@ -68,7 +69,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"id" serial PRIMARY KEY NOT NULL,
   	"name" varchar,
   	"slug" varchar,
-  	"status" "enum_projects_status" DEFAULT 'Ongoing',
+  	"status" "enum_projects_stage" DEFAULT 'Ongoing',
   	"type" "enum_projects_type" DEFAULT 'Apartment',
   	"order" numeric DEFAULT 100,
   	"area" varchar,
@@ -136,7 +137,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"parent_id" integer,
   	"version_name" varchar,
   	"version_slug" varchar,
-  	"version_status" "enum__projects_v_version_status" DEFAULT 'Ongoing',
+  	"version_status" "enum_projects_stage" DEFAULT 'Ongoing',
   	"version_type" "enum__projects_v_version_type" DEFAULT 'Apartment',
   	"version_order" numeric DEFAULT 100,
   	"version_area" varchar,
@@ -843,10 +844,11 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "site_settings" CASCADE;
   DROP TABLE "site_settings_locales" CASCADE;
   DROP TYPE "public"."_locales";
-  DROP TYPE "public"."enum_projects_status";
+  DROP TYPE "public"."enum_projects_stage";
   DROP TYPE "public"."enum_projects_type";
-  DROP TYPE "public"."enum__projects_v_version_status";
+  DROP TYPE "public"."enum_projects_status";
   DROP TYPE "public"."enum__projects_v_version_type";
+  DROP TYPE "public"."enum__projects_v_version_status";
   DROP TYPE "public"."enum__projects_v_published_locale";
   DROP TYPE "public"."enum_posts_kind";
   DROP TYPE "public"."enum_posts_status";

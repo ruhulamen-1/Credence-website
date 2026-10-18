@@ -68,6 +68,9 @@ npm run dev
 
 **যাচাই:** সাইটে একটা ফর্ম জমা দাও → phpMyAdmin → `leads` → **Browse**-এ লিড দেখা গেলে সব ঠিক।
 
+## ডেমো ডেটা
+সাইট ভরে দেখতে চাইলে: `npm run seed:demo` (ডেমো কনটেন্ট + ৩০ লিড), অথবা phpMyAdmin-এ `demo-data/credence-demo-data.sql` Import। বিস্তারিত: [`demo-data/README.md`](demo-data/README.md)।
+
 ## ধাপ ৫ — প্রোডাকশনে (লাইভ ডাটাবেস)
 ডেভেলপমেন্টে (`npm run dev`) টেবিল নিজে তৈরি/বদলায়। লাইভে নিজে নিয়ম মেনে migration দিয়ে:
 ```bash

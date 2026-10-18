@@ -460,7 +460,7 @@
         },
         "status": {
           "name": "status",
-          "type": "enum_projects_status",
+          "type": "enum_projects_stage",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
@@ -1303,7 +1303,7 @@
         },
         "version_status": {
           "name": "version_status",
-          "type": "enum__projects_v_version_status",
+          "type": "enum_projects_stage",
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
@@ -6645,12 +6645,13 @@
         "bn"
       ]
     },
-    "public.enum_projects_status": {
-      "name": "enum_projects_status",
+    "public.enum_projects_stage": {
+      "name": "enum_projects_stage",
       "schema": "public",
       "values": [
-        "draft",
-        "published"
+        "Ongoing",
+        "Completed",
+        "Upcoming"
       ]
     },
     "public.enum_projects_type": {
@@ -6661,8 +6662,8 @@
         "Commercial"
       ]
     },
-    "public.enum__projects_v_version_status": {
-      "name": "enum__projects_v_version_status",
+    "public.enum_projects_status": {
+      "name": "enum_projects_status",
       "schema": "public",
       "values": [
         "draft",
@@ -6675,6 +6676,14 @@
       "values": [
         "Apartment",
         "Commercial"
+      ]
+    },
+    "public.enum__projects_v_version_status": {
+      "name": "enum__projects_v_version_status",
+      "schema": "public",
+      "values": [
+        "draft",
+        "published"
       ]
     },
     "public.enum__projects_v_published_locale": {
@@ -6894,6 +6903,6 @@
     "tables": {},
     "columns": {}
   },
-  "id": "f11f29ec-7944-4cef-9f8d-b2a05cd5c09a",
+  "id": "72b27598-3a25-4187-8a95-a51670b228b4",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }

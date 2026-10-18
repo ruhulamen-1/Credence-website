@@ -30,7 +30,7 @@ export const Projects: CollectionConfig = {
             {
               type: 'row',
               fields: [
-                { name: 'status', type: 'select', required: true, defaultValue: 'Ongoing', options: ['Ongoing', 'Completed', 'Upcoming'] },
+                { name: 'status', type: 'select', required: true, defaultValue: 'Ongoing', options: ['Ongoing', 'Completed', 'Upcoming'], enumName: 'enum_projects_stage' },
                 { name: 'type', type: 'select', required: true, defaultValue: 'Apartment', options: ['Apartment', 'Commercial'] },
                 { name: 'order', type: 'number', defaultValue: 100, admin: { description: 'Lower numbers show first' } },
               ],
