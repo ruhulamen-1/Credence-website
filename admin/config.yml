@@ -38,6 +38,8 @@ collections:
               - { label: Area / neighbourhood (used by the Location filter), name: area, widget: string }
               - { label: Full address, name: addr, widget: string }
               - { label: Map search text, name: mapQuery, widget: string, required: false, hint: "What Google Maps should search for, e.g. 'Road 13, Gulshan 1, Dhaka'" }
+              - { label: "Cover photo (replaces the illustrated tower on the card and project page)", name: image, widget: image, required: false }
+              - { label: Cover photo alt text, name: imageAlt, widget: string, required: false }
               - { label: Tagline (hero text), name: tagline, widget: text, required: false }
               - { label: Tower colour (0–360), name: hue, widget: number, min: 0, max: 360, default: 208, value_type: int, required: false }
               - { label: Tower floors, name: floors, widget: number, min: 4, max: 40, default: 16, value_type: int, required: false }

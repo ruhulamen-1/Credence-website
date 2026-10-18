@@ -71,7 +71,7 @@ function page(p) {
       <span class="badge">${esc(p.addr)}</span>
       ${brochure}
     </div>
-    <div class="tower-wrap"><svg id="tower" viewBox="0 0 300 640" aria-hidden="true"></svg></div>
+    ${p.image ? `<div class="photo-wrap"><img src="${esc(p.image)}" alt="${esc(p.imageAlt || p.name)}"></div>` : `<div class="tower-wrap"><svg id="tower" viewBox="0 0 300 640" aria-hidden="true"></svg></div>`}
     <div class="mist"></div>
     ${facts}
   </section>
@@ -108,14 +108,14 @@ ${gallery}
 <footer><div><strong>CREDENCE</strong> Housing Limited</div><div>© ${new Date().getFullYear()} Credence Housing Ltd. · Hotline ${esc(site.hotline)}</div></footer>
 <script src="tower.js"></script>
 <script src="common.js"></script>
-<script>tower(document.querySelector("#tower"),${p.hue ?? 208},${p.floors || 18})</script>
+${p.image ? "" : `<script>tower(document.querySelector("#tower"),${p.hue ?? 208},${p.floors || 18})</script>`}
 </body>
 </html>
 `;
 }
 
 projects.forEach(p => fs.writeFileSync(`project-${p.slug}.html`, page(p)));
-fs.writeFileSync("data/projects.js", "window.PROJECTS=" + JSON.stringify(projects.map(({ slug, name, area, addr, type, status, hue }) => ({ slug, name, area, addr, type, status, hue }))) + ";\n");
+fs.writeFileSync("data/projects.js", "window.PROJECTS=" + JSON.stringify(projects.map(({ slug, name, area, addr, type, status, hue, image, imageAlt }) => ({ slug, name, area, addr, type, status, hue, image, imageAlt }))) + ";\n");
 // public (non-secret) site settings for the browser
 fs.writeFileSync("data/site.js", "window.SITE=" + JSON.stringify({ hotline: site.hotline, whatsapp: site.whatsapp, formEndpoint: site.formEndpoint, consentRequired: site.consentRequired, tracking: site.tracking }) + ";\n");
 // home page SEO block (between markers in index.html)

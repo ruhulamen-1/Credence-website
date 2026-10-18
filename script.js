@@ -9,13 +9,17 @@ const grid=$("#grid"),locSel=$("#locSel"),nameSel=$("#nameSel");
 PROJECTS.forEach(p=>nameSel.add(new Option(p.name,p.name)));
 PROJECTS.forEach(p=>{
  const c=document.createElement("article");c.className="card reveal";
- const s=mk("svg",{viewBox:"0 0 300 375",role:"img","aria-label":p.name+" illustration"});
- const bg=mk("defs",{},s),lg=mk("linearGradient",{id:"s"+p.name.length+p.hue,x1:0,y1:0,x2:0,y2:1},bg);
- mk("stop",{offset:0,"stop-color":`hsl(${p.hue} 70% 62%)`},lg);mk("stop",{offset:1,"stop-color":`hsl(${p.hue} 60% 94%)`},lg);
- mk("rect",{width:300,height:375,fill:`url(#s${p.name.length+""+p.hue})`},s);
- const inner=mk("svg",{x:60,y:28,width:158,height:337,viewBox:"0 0 300 640"},s);tower(inner,p.hue,12);
- mk("rect",{y:300,width:300,height:75,fill:"#fff",opacity:.55},s);
- c.appendChild(s);
+ if(p.image){
+  const im=document.createElement("img");im.src=p.image;im.alt=p.imageAlt||p.name;im.loading="lazy";c.appendChild(im);
+ }else{
+  const s=mk("svg",{viewBox:"0 0 300 375",role:"img","aria-label":p.name+" illustration"});
+  const bg=mk("defs",{},s),lg=mk("linearGradient",{id:"s"+p.name.length+p.hue,x1:0,y1:0,x2:0,y2:1},bg);
+  mk("stop",{offset:0,"stop-color":`hsl(${p.hue} 70% 62%)`},lg);mk("stop",{offset:1,"stop-color":`hsl(${p.hue} 60% 94%)`},lg);
+  mk("rect",{width:300,height:375,fill:`url(#s${p.name.length+""+p.hue})`},s);
+  const inner=mk("svg",{x:60,y:28,width:158,height:337,viewBox:"0 0 300 640"},s);tower(inner,p.hue,12);
+  mk("rect",{y:300,width:300,height:75,fill:"#fff",opacity:.55},s);
+  c.appendChild(s);
+ }
  c.insertAdjacentHTML("beforeend",`<div><h3><a href="project-${p.slug}.html" class="stretch">${p.name}</a></h3><p>${p.addr}</p><span class="tag">${p.status} · ${p.type}</span></div>`);
  c._p=p;grid.appendChild(c);
 });

@@ -153,3 +153,9 @@ footer strong{color:#fff;letter-spacing:.25em}
 .consent p{flex:1 1 220px}.consent div{display:flex;gap:8px}.consent .btn:not(.dark){background:#eef3f8;color:var(--ink)}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;display:block}
 .dl{display:inline-block;margin-top:14px;text-decoration:none}
+
+/* photo covers (replace the illustrated tower when a project has an image) */
+.card>img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.photo-wrap{position:absolute;z-index:2;right:clamp(20px,6vw,90px);top:clamp(110px,16vh,150px);width:min(42vw,520px);height:min(58%,420px)}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;border-radius:20px;box-shadow:0 30px 60px rgba(20,60,110,.25)}
+@media(max-width:900px){.photo-wrap{position:relative;right:auto;top:auto;width:100%;height:240px;order:2}}
