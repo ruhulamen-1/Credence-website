@@ -7,6 +7,8 @@ const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
 
 const nextConfig: NextConfig = {
+  // The shared-hosting export builds into its own folder so it never disturbs the normal `.next` build.
+  distDir: process.env.NEXT_DIST_DIR || '.next',
   images: {
     localPatterns: [
       {

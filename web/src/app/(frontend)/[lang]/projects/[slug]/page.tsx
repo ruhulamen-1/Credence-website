@@ -47,7 +47,7 @@ export default async function ProjectPage({ params }: Props) {
     <>
       <script dangerouslySetInnerHTML={{ __html: "document.body.classList.add('open')" }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, '\\u003c') }} />
-      <Nav lang={lang} t={navT(t)} hotline={s.hotline} cta={t.nav.interested} ctaHref="#interest" />
+      <Nav lang={lang} t={navT(t)} path={`/projects/${slug}`} hotline={s.hotline} cta={t.nav.interested} ctaHref="#interest" />
       <main>
         <section className="hero phero">
           <div className="hero-copy">

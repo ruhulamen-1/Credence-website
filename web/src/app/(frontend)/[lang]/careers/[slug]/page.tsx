@@ -35,7 +35,7 @@ export default async function JobPage({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, '\\u003c') }} />
-      <Nav lang={lang} t={navT(t)} hotline={s.hotline} />
+      <Nav lang={lang} t={navT(t)} path={`/careers/${slug}`} hotline={s.hotline} />
       <InnerHero eyebrow={t.careers.eyebrow} title={j.title} crumbs={<><a href={href(lang, '/careers')}>{t.careers.back}</a></>}>
         <p>{[j.department, j.location, j.employmentType].filter(Boolean).join(' · ')}{j.deadline ? ` · ${fmt(t.careers.deadline, { date: new Date(j.deadline).toLocaleDateString(dateLocale(lang), { year: 'numeric', month: 'long', day: 'numeric' }) })}` : ''}</p>
       </InnerHero>

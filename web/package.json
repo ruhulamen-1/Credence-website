@@ -14,7 +14,8 @@
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "migrate:create": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:create",
     "migrate": "cross-env NODE_OPTIONS=--no-deprecation payload migrate",
-    "ci": "payload migrate && npm run build"
+    "ci": "payload migrate && npm run build",
+    "export:shared": "tsx --env-file=.env src/export-shared.ts"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.91.0",

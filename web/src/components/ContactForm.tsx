@@ -37,7 +37,8 @@ export function ContactForm({ t, button, thanks, messageRequired = true, kind = 
     try {
       const attribution = (window as unknown as { getAttribution?: () => object }).getAttribution?.() || {}
       const details = extra.map((x) => (d[x.name]?.trim() ? `${x.label}: ${d[x.name].trim()}` : '')).filter(Boolean).join('\n')
-      const r = await fetch('/api/enquiry', {
+      // Normal site: the built-in API route. Shared-hosting export: set NEXT_PUBLIC_ENQUIRY_URL=/enquiry.php (PHP + MySQL).
+      const r = await fetch(process.env.NEXT_PUBLIC_ENQUIRY_URL || '/api/enquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: d.name, phone: d.phone, email: d.email, msg: d.msg, website: d.website, kind, project, job, campaign, variant, details, page: location.pathname, source: attribution }),

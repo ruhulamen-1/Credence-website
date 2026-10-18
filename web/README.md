@@ -49,6 +49,9 @@ Save করলেই সাইটে সাথে সাথে বদলে য�
 
 **Draft ও schedule:** Save Draft করলে শুধু স্টাফ দেখে; Publish করলে সাইটে যায়। Publish বাটনের পাশে Schedule দিয়ে সময় ঠিক করা যায় (লোকালে `npm run dev` চললেই চলে; Vercel-এ `CRON_SECRET` লাগে)।
 
+## ২খ. Shared hosting (cPanel + MySQL/phpMyAdmin) এ লাইভ
+হোস্টিংয়ে Node.js না থাকলে: লোকালে কাজ করে `npm run export:shared -- --site-url=https://ডোমেইন.com` চালাও, `dist-shared/` আপলোড করো; ফর্মের লিড হোস্টিংয়ের MySQL-এ জমে, phpMyAdmin-এ দেখা যায়। সম্পূর্ণ গাইড: [`SHARED_HOSTING.md`](SHARED_HOSTING.md)।
+
 ## ৩. ছবি বদলানো
 Admin → **Projects** → প্রজেক্ট → **Look** ট্যাব → **Cover photo** আপলোড → Save। তখন card ও project page-এ আঁকা টাওয়ারের বদলে ছবি আসে। Alt text লিখো। ছবি 1600px-এর নিচে, ~300KB রাখা ভালো।
 
@@ -73,6 +76,8 @@ Admin → **Projects** → প্রজেক্ট → **Look** ট্যাব
 | `src/components/` | Intro, Nav, Finder, ProjectGrid, ContactForm, Tower… |
 | `src/app/(frontend)/globals.css` | ডিজাইন (পুরনো `style.css` একই) |
 | `public/` | `motion.js`, `smooth.js`, `tracking.js`, `effects.js`, ছবি |
+| `src/export-shared.ts` | সাইটকে স্ট্যাটিক ফাইলে export করে (shared hosting) |
+| `shared-host/` | `enquiry.php` (ফর্ম → MySQL), `schema.sql`, `config.sample.php` |
 | `src/seed.ts` | `../data/*.json` থেকে কনটেন্ট ঢোকায় |
 
 ## ৬. সমস্যা হলে

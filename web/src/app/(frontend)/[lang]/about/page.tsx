@@ -34,7 +34,7 @@ export default async function About({ params }: Props) {
   const mgmt = team.filter((m) => m.group === 'management'), rest = team.filter((m) => m.group !== 'management')
   return (
     <>
-      <Nav lang={lang} t={navT(t)} hotline={s.hotline} />
+      <Nav lang={lang} t={navT(t)} path={'/about'} hotline={s.hotline} />
       <InnerHero eyebrow={t.about.eyebrow} title={t.about.title}><p>{t.about.text}</p></InnerHero>
       <main>
         <section>

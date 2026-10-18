@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { href, type Dict, type Lang } from '../i18n'
 
-export function Nav({ lang, t, hotline, cta, ctaHref = '#contact' }: { lang: Lang; t: Pick<Dict, 'nav' | 'switchTo'>; hotline: string; cta?: string; ctaHref?: string }) {
+export function Nav({ lang, t, hotline, cta, ctaHref = '#contact', path }: { lang: Lang; t: Pick<Dict, 'nav' | 'switchTo'>; hotline: string; cta?: string; ctaHref?: string; path?: string }) {
   const [open, setOpen] = useState(false)
   const [solid, setSolid] = useState(false)
   const pathname = usePathname() || '/'
@@ -14,7 +14,9 @@ export function Nav({ lang, t, hotline, cta, ctaHref = '#contact' }: { lang: Lan
     return () => { removeEventListener('scroll', s); removeEventListener('keydown', k) }
   }, [])
   // Same page in the other language
-  const bare = pathname === '/bn' ? '/' : pathname.startsWith('/bn/') ? pathname.slice(3) : pathname
+  // On the server the English pages are internally /en/… (rewritten from /…), so strip either prefix.
+  // `path` (the English path of this page) comes from the server page so the link is right even before JavaScript runs.
+  const bare = path ?? (pathname.replace(/^(\/(en|bn))+(?=\/|$)/, '') || '/')
   const other: Lang = lang === 'bn' ? 'en' : 'bn'
   const h = (p: string) => href(lang, p)
   const anchor = ctaHref.startsWith('#') ? ctaHref : h(ctaHref)

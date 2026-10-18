@@ -23,7 +23,7 @@ export default async function Page({ params }: Props) {
   const p = t.landowner
   return (
     <>
-      <Nav lang={lang} t={navT(t)} hotline={s.hotline} />
+      <Nav lang={lang} t={navT(t)} path={'/landowner'} hotline={s.hotline} />
       <InnerHero eyebrow={p.eyebrow} title={p.title}><p>{p.text}</p></InnerHero>
       <main>
         <section className="narrow">

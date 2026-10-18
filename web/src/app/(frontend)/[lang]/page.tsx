@@ -36,7 +36,7 @@ export default async function Home({ params }: Props) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, '\\u003c') }} />
       <Intro t={t.intro} />
-      <Nav lang={lang} t={navT(t)} hotline={s.hotline} />
+      <Nav lang={lang} t={navT(t)} path={'/'} hotline={s.hotline} />
       <main id="top">
         <section className="hero" id="hero">
           <div className="sky" />

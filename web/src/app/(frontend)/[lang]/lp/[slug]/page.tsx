@@ -26,7 +26,7 @@ export default async function LandingPage({ params }: Props) {
   return (
     <>
       <script dangerouslySetInnerHTML={{ __html: "document.body.classList.add('open')" }} />
-      <Nav lang={lang} t={navT(t)} hotline={s.hotline} cta={t.nav.interested} ctaHref="#interest" />
+      <Nav lang={lang} t={navT(t)} path={`/lp/${slug}`} hotline={s.hotline} cta={t.nav.interested} ctaHref="#interest" />
       <main className="lp-page" id="interest"><LandingHero p={p} t={t.lp} tf={t.form} /></main>
       <Footer hotline={s.hotline} t={t} />
     </>

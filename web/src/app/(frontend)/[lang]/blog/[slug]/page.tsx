@@ -43,7 +43,7 @@ export default async function PostPage({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, '\\u003c') }} />
-      <Nav lang={lang} t={navT(t)} hotline={s.hotline} />
+      <Nav lang={lang} t={navT(t)} path={`/blog/${slug}`} hotline={s.hotline} />
       <InnerHero eyebrow={t.blog[post.kind === 'event' ? 'events' : post.kind === 'news' ? 'news' : 'blog']} title={post.title}
         crumbs={<><a href={href(lang, '/')}>{t.project.home}</a> / <a href={href(lang, '/blog')}>{t.blog.title}</a></>}>
         {post.excerpt && <p>{post.excerpt}</p>}

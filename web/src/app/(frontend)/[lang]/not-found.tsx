@@ -9,7 +9,7 @@ export default async function NotFound() {
   const s = await getSettings('en')
   return (
     <>
-      <Nav lang="en" t={navT(en)} hotline={s.hotline} />
+      <Nav lang="en" t={navT(en)} path="/" hotline={s.hotline} />
       <main className="notfound">
         <h1>{en.notFound.title}</h1>
         <p>{en.notFound.text}</p>
