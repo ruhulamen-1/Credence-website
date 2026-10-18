@@ -37,6 +37,23 @@ try {
         : '  This site needs MySQL 8.0.19+. Install a newer MySQL — see MYSQL_SETUP.md ("Version").')
     } catch { /* version check is optional */ }
   }
+  // Deep check: read every collection the way the website does (both languages) and report the exact failure, if any.
+  console.log('\nReading every collection like the website does…')
+  let failed = 0
+  const probe = async (label: string, fn: () => Promise<unknown>) => {
+    try { await fn(); console.log(`  ✔ ${label}`) } catch (e) {
+      failed++
+      const x = e as { message?: string; cause?: { message?: string; sqlMessage?: string }; stack?: string }
+      console.log(`  ✖ ${label}\n      ${(x.cause?.sqlMessage || x.cause?.message || x.message || '').split('\n')[0].slice(0, 400)}`)
+      console.log('      ' + String(x.stack || '').split('\n').slice(1, 4).map((l) => l.trim()).join('\n      '))
+    }
+  }
+  for (const s of slugs.filter((x) => !x.startsWith('payload-') && x !== 'users')) {
+    for (const locale of ['en', 'bn'] as const) await probe(`${s} (${locale})`, () => payload.find({ collection: s as never, limit: 3, depth: 1, locale, overrideAccess: true }))
+  }
+  await probe('site-settings (en)', () => payload.findGlobal({ slug: 'site-settings', depth: 1, locale: 'en' }))
+  await probe('site-settings (bn)', () => payload.findGlobal({ slug: 'site-settings', depth: 1, locale: 'bn' }))
+  console.log(failed ? `\n✖ ${failed} read(s) failed — copy everything above and send it.` : '\n✔ All reads work.')
   console.log('\nNext: npm run seed   (adds the 7 projects + the first admin), then npm run dev')
   process.exit(0)
 } catch (e) {
