@@ -2,7 +2,7 @@
   "name": "credence-web",
   "version": "1.0.0",
   "private": true,
-  "description": "Credence Housing Limited — Next.js website + Payload CMS admin (/admin)",
+  "description": "Credence Housing Limited \u2014 Next.js website + Payload CMS admin (/admin)",
   "type": "module",
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
@@ -15,7 +15,8 @@
     "migrate:create": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:create",
     "migrate": "cross-env NODE_OPTIONS=--no-deprecation payload migrate",
     "ci": "payload migrate && npm run build",
-    "export:shared": "tsx --env-file=.env src/export-shared.ts"
+    "export:shared": "tsx --env-file=.env src/export-shared.ts",
+    "db:check": "tsx --env-file=.env src/db-check.ts"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.91.0",
