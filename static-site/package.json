@@ -1,0 +1,8 @@
+{
+  "name": "credence-website",
+  "private": true,
+  "scripts": {
+    "start": "node dev.js",
+    "build": "node build.js"
+  }
+}

@@ -1,166 +1,91 @@
-# Credence Housing Limited — Website
+# Credence Housing Limited — Website (Next.js + Payload CMS)
 
-> **নতুন:** `web/` ফোল্ডারে Next.js + Payload CMS সংস্করণ আছে (admin-এ Leads/CRM, roles, SEO, tracking)। দেখো [`web/README.md`](web/README.md) ও [`NEXTJS_MIGRATION_PLAN.md`](NEXTJS_MIGRATION_PLAN.md)। নিচের বর্ণনা পুরনো স্ট্যাটিক সাইটের।
+Website **ও** `/admin` (Payload CMS) একই প্রজেক্টে। Lead, project, SEO, tracking সব admin থেকে।
 
-Dhaka-r real estate company Credence Housing Limited-er website. Theme: **"Above the Clouds"** (megh → tower → "Live Above The Ordinary" → property finder).
+> **প্রজেক্ট এখন একটাই ফোল্ডারে** — এই ফোল্ডারেই `npm install`, `npm run seed`, `npm run dev` চালাও। পুরনো (শুধু HTML/CSS) সংস্করণ `static-site/` ফোল্ডারে আলাদা রাখা আছে, ওটা লাগলে তবেই দেখো।
 
-Pure HTML/CSS/JS, kono framework ba database lage na. Content `data/` folder-er JSON file theke ashe, `/admin` theke edit kora jay.
+## ১. প্রথমবার চালানো (নিজের কম্পিউটারে)
 
----
-
-## 1. Folder-e ki ache
-
-| File / Folder | Kaj |
-|---|---|
-| `index.html` | Home page (cloud intro, hero, finder, projects, stats, contact) |
-| `project-*.html` | Prottek project-er page — **nijer hate edit korbe na**, `build.js` banay |
-| `style.css` | Sob design |
-| `script.js` | Home page-er interaction (intro, filter, project card) |
-| `common.js` | Sob page-er common kaj (menu, animation, contact form) |
-| `tower.js` | Tower-er SVG drawing |
-| `smooth.js` | Smooth (inertial) scrolling |
-| `motion.js` | Scroll animation (headline reveal, card fan, parallax, mask reveal, wordmark) |
-| `tracking.js` | GA4 / GTM / Meta Pixel / TikTok, cookie consent, WhatsApp button |
-| `data/projects.json` | Sob project-er tothyo |
-| `data/site.json` | Company info, SEO, tracking ID |
-| `dev.js` | `npm start` — website ar admin ek shathe chalay |
-| `build.js` | Data theke page, sitemap, robots.txt baniye dey |
-| `admin/` | Admin panel (`/admin/`) |
-| `images/` | Upload kora chobi ekhane jay |
-| `THEME.md` | Design guide (rong, font, style) |
-| `ADMIN_PLAN.md` / `ADMIN_GUIDE.md` | Admin-er plan ar ba byabohar guide |
-
----
-
-## 2. Computer-e chalano (local) — ek command-e website + admin
-
-**Lagbe:** [Node.js](https://nodejs.org) ar [Git](https://git-scm.com).
+**লাগবে:** Node.js 20+ (nodejs.org)
 
 ```bash
-git clone https://github.com/ruhulamen-1/Credence-website
-cd Credence-website
-npm start
+cp .env.example .env        # Windows CMD: copy .env.example .env
+npm install
+npm run seed                # ৭টা প্রজেক্ট + site settings ঢোকায়, প্রথম admin বানায়
+npm run dev
 ```
 
-Ei ek command-i website ar admin dutoi chalu kore:
-- Website: <http://localhost:8000>
-- Admin: <http://localhost:8000/admin/> → **Login** → **Website content**
+- Website: <http://localhost:3000>
+- Admin: <http://localhost:3000/admin>
+  - Email: `admin@credence.local`
+  - Password: `ChangeMe123!` (`.env`-এর `SEED_ADMIN_*` থেকে; **নিজের পাসওয়ার্ড দিয়ে বদলে নাও**)
 
-Admin-e **Publish** dile site **nijei rebuild** hoy (terminal-e `[build] site rebuilt` dekhabe). Browser-e `Ctrl + F5` dilei notun content dekhabe.
+ডাটাবেস লোকালে একটা ফাইল (`credence.db`, SQLite) — আলাদা কিছু install লাগে না। **MySQL/phpMyAdmin চাইলে** `.env`-এ `DATABASE_URL=mysql://root:@127.0.0.1:3306/credence` দাও — গাইড: [`MYSQL_SETUP.md`](MYSQL_SETUP.md) (কমিউনিটি অ্যাডাপ্টার, আসল MySQL-এ আমি পরীক্ষা করিনি)।
 
-Baddho korte `Ctrl + C`. Port busy thakle: `PORT=8001 npm start`.
-
----
-
-## 3. Content bodlano (admin diye)
-
-1. `/admin/` e jao → **Website content**.
-2. **Projects** → project select → field bodlao → **Publish**.
-3. `npm start` cholle build nijei hoy. Ebar GitHub-e pathao:
-   ```bash
-   git add -A
-   git commit -m "Update content"
-   git push
-   ```
-
-Notun project: **Projects → Add project**. Slug lowercase ar dash diye likho (jemon `green-view`). Slug launch-er pore bodlio na, URL bhenge jabe.
-
-**Site settings, SEO & tracking** e ache: home page SEO title/description, phone/email/address, WhatsApp number, form endpoint, GTM/GA4/Meta Pixel/TikTok ID.
-
----
-
-## 4. Image (chobi) bodlano
-
-Ekhon project-er jaygay amader banano **illustrated tower** dekhay. Real photo dile seta replace hoy.
-
-### Project-er cover photo (card + project page)
-1. Admin → Projects → project khulo.
-2. **Cover photo** e chobi upload koro (ar **alt text** likho, jemon "Arkology front view").
-3. Publish → `node build.js` → commit → push.
-
-Cover photo dile home-page card-e ar project page-er hero-te tower-er bodole oi photo dekhabe.
-
-### Gallery ar brochure
-- **Gallery:** project-e jototuku chobi, protita-r alt text shoho.
-- **Brochure (PDF):** upload korle project page-e "Download brochure" button ashe.
-- **Social share image:** Facebook/WhatsApp-e link share korle ja dekhay.
-
-### Chobir niyom
-- Format: `.jpg` ba `.webp`. Width **1600px**-er beshi na, size **300 KB**-er niche (site druto thakbe).
-- File-er nam English-e, space chhara (`arkology-front.jpg`).
-- Chobi `images/` folder-e jay. Admin na use korleo ei folder-e chobi rekhe `data/projects.json`-e `"image": "images/arkology-front.jpg"` likhe dite paro.
-
-### Home page-er hero (tower) ba logo bodlano
-Eta admin-e nei, code-e korte hobe:
-- **Home-er tower:** `index.html`-e `<svg id="tower">` ache. Eta-r jaygay `<img src="images/hero.jpg" alt="...">` boshate paro.
-- **Logo:** `index.html`-er `<a class="logo">` er bhitor text ache. Logo image dite `<img src="images/logo.svg" alt="Credence">` boshao.
-
----
-
-## 4a. Contact form theke lead pawa
-
-Ekhon form-e submit korle kothao data jay na (shudhu "Thank you" dekhay). Lead email-e peyte:
-1. [formspree.io](https://formspree.io)-te free account, ekta form banao.
-2. Form-er URL (`https://formspree.io/f/xxxx`) copy koro.
-3. Admin → **Site settings** → **Lead form endpoint** e paste → Publish.
-
-Lead-er sathe UTM source, campaign, page ar referrer o jay.
-
----
-
-## 5. Online-e deploy (sobar jonno live)
-
-Duita upay. **Upay A sohoj**, **Upay B-te admin-o live cholbe.**
-
-### Upay A: GitHub Pages (free, sohoj — shudhu website live, admin local-e)
-1. GitHub-e repo → **Settings** → **Pages**.
-2. **Source:** Deploy from a branch → Branch **main**, folder **/ (root)** → **Save**.
-3. 1–2 minute pore live: `https://ruhulamen-1.github.io/Credence-website/`
-
-Prottek `git push`-er pore site nijei update hoy.
-
-### Upay B: Netlify (free — website + admin dutoi live)
-1. [netlify.com](https://netlify.com) → **Add new site** → **Import an existing project** → GitHub → `Credence-website` select.
-   `netlify.toml` already ache (build command `node build.js`), kichu bodlate hobe na → **Deploy**.
-2. **Admin login setup:**
-   - GitHub → **Settings → Developer settings → OAuth Apps → New OAuth App**.
-     - Homepage URL: tomar Netlify site URL
-     - Authorization callback URL: `https://api.netlify.com/auth/done`
-     - Client ID ar Client Secret copy koro.
-   - Netlify → **Site configuration → Access & security → OAuth → Install provider → GitHub** → ID ar Secret paste.
-3. `https://tomar-site.netlify.app/admin/` e giye **Login with GitHub**.
-4. Je staff-ra admin use korbe tader GitHub-e repo-te **collaborator (write)** koro.
-5. Admin-e **Publish** dile Netlify nijei rebuild kore site update kore dey.
-
-### Nijer domain (jemon credencehousingltd.com)
-- **Netlify:** Domain management → Add custom domain → DNS-e Netlify-r dewa record boshao. SSL (https) auto hoy.
-- **GitHub Pages:** Settings → Pages → Custom domain → DNS-e `CNAME` record dao.
-- Domain thik hole `data/site.json`-er `siteUrl` ar `admin/config.yml`-er `site_url` bodle daw, tahole SEO/sitemap thik URL pabe.
-
----
-
-## 6. Live-er por checklist
-- [ ] `siteUrl` thik domain
-- [ ] Project-er real photo, spec, floor plan, brochure
-- [ ] Paramount Residences, Platinum, Cynosure-er thik location ar status
-- [ ] GTM ba GA4 ID, Meta Pixel ID
-- [ ] Formspree endpoint, WhatsApp number
-- [ ] Google Search Console-e site verify koro ar `sitemap.xml` submit koro
-- [ ] Phone-e ar desktop-e site dekho
-
----
-
-## 7. Shomoshya hole
-
-| Shomoshya | Somadhan |
+## ২. Admin দিয়ে কী করা যায়
+| মেনু | কাজ |
 |---|---|
-| `python` command nei | Lagbe na, `npm start` use koro |
-| Admin-e "Failed to load" | `npm start` cholche kina dekho (admin proxy :8081 port-e chole) |
-| Admin-e change dekhachhe na | `node build.js` chalao, browser-e `Ctrl + F5` |
-| `git push` password chay | GitHub **Personal Access Token** dao (Settings → Developer settings → Tokens) |
-| `LF will be replaced by CRLF` warning | Windows-er normal warning, ignore koro |
-| Notun project card-e chobi ashchhe na | `node build.js` chalao ar `data/projects.js` update holo kina dekho |
+| **Projects** | নতুন প্রজেক্ট, ছবি (cover/gallery), brochure PDF, facts, story, specification, SEO title/description |
+| **Leads** | ফর্মের সব enquiry। স্ট্যাটাস (New → Contacted → Site visit → Negotiation → Booked/Lost), assignee, notes, UTM source, duplicate ফোন চিহ্নিত |
+| **Site settings, SEO & tracking** | ফোন/ইমেইল/ঠিকানা, WhatsApp বাটন, home SEO, GTM / GA4 / Meta Pixel / TikTok ID, cookie consent |
+| **Media** | ছবি/PDF আপলোড (alt text সহ) |
+| **Users** | Admin / Marketing / Sales — কে কী দেখবে |
 
----
+**Roles:** Admin = সব · Marketing = কনটেন্ট + SEO + tracking · Sales = শুধু Leads।
 
-Design-er rong, font, style: `THEME.md`. Admin-er bistarito plan: `ADMIN_PLAN.md`.
+Save করলেই সাইটে সাথে সাথে বদলে যায় (আলাদা build লাগে না)।
+
+## ২ক. নতুন মডিউল (সব `/admin` থেকে)
+| মেনু | কাজ |
+|---|---|
+| **Blog, News & Events** | লেখা/সংবাদ/ইভেন্ট। Draft রাখা যায়, **Schedule publish** দিয়ে পরে প্রকাশ। পেজ: `/blog` |
+| **Management & Team** | টিম সদস্য → `/about` |
+| **Careers** | চাকরির বিজ্ঞপ্তি → `/careers` (আবেদন Leads-এ আসে, type = career) |
+| **Campaign pages** | বিজ্ঞাপনের জন্য `/lp/<slug>` পেজ, ফোন নম্বর, **A/B test** (headline/button) |
+| **Redirects** | পুরনো URL → নতুন URL (301/302) |
+| **Leads** | ধরন: project / landowner / buyer / career / campaign। উপরে **Download CSV** বাটন |
+| **Dashboard** | Admin-এর হোমে লিডের হিসাব (৭/৩০ দিন, pipeline, সোর্স, প্রজেক্ট) |
+
+**বাংলা ভার্সন:** ইংরেজি `/…`, বাংলা `/bn/…`। Admin-এর উপরে ডানে **Locale** বদলে বাংলা লেখা বসাও (ফাঁকা থাকলে সাইটে ইংরেজিই দেখায়)। UI-র বাংলা লেখা `src/i18n/bn.ts`-এ — প্রকাশের আগে একজন বাংলাভাষীকে দিয়ে দেখিয়ে নাও।
+
+**Draft ও schedule:** Save Draft করলে শুধু স্টাফ দেখে; Publish করলে সাইটে যায়। Publish বাটনের পাশে Schedule দিয়ে সময় ঠিক করা যায় (লোকালে `npm run dev` চললেই চলে; Vercel-এ `CRON_SECRET` লাগে)।
+
+## ২খ. Shared hosting (cPanel + MySQL/phpMyAdmin) এ লাইভ
+হোস্টিংয়ে Node.js না থাকলে: লোকালে কাজ করে `npm run export:shared -- --site-url=https://ডোমেইন.com` চালাও, `dist-shared/` আপলোড করো; ফর্মের লিড হোস্টিংয়ের MySQL-এ জমে, phpMyAdmin-এ দেখা যায়। সম্পূর্ণ গাইড: [`SHARED_HOSTING.md`](SHARED_HOSTING.md)।
+
+## ৩. ছবি বদলানো
+Admin → **Projects** → প্রজেক্ট → **Look** ট্যাব → **Cover photo** আপলোড → Save। তখন card ও project page-এ আঁকা টাওয়ারের বদলে ছবি আসে। Alt text লিখো। ছবি 1600px-এর নিচে, ~300KB রাখা ভালো।
+
+## ৪. Deploy (সবার জন্য live)
+পুরো ধাপ: [`NEXTJS_MIGRATION_PLAN.md`](NEXTJS_MIGRATION_PLAN.md) → "Steps to go live"। সংক্ষেপে:
+1. Neon-এ Postgres বানাও → `DATABASE_URL`
+2. Vercel-এ repo import → Root Directory = (খালি/রুট), **Build Command = `npm run ci`**
+3. Environment variables বসাও (`.env.example` দেখো): `DATABASE_URL`, `PAYLOAD_SECRET`, `NEXT_PUBLIC_SITE_URL`, uploads-এর জন্য `S3_*` (Cloudflare R2)
+4. একবার `npm run migrate:create -- initial` চালিয়ে migration commit করো, তারপর production DB-তে `npm run seed`
+5. ডোমেইন যোগ করো
+
+## ৫. ফোল্ডার
+| Path | কাজ |
+|---|---|
+| `src/payload.config.ts` | CMS কনফিগ (DB, storage, collections) |
+| `src/collections/` | Projects, Posts, Team, Careers, LandingPages, Leads, Redirects, Media, Users |
+| `src/globals/SiteSettings.ts` | সাইট সেটিংস |
+| `src/app/(frontend)/[lang]/` | পেজ (home, projects, blog, about, careers, landowner, buyer, lp, catch-all redirect) — `[lang]` = en/bn |
+| `src/i18n/` | ইংরেজি ও বাংলা UI টেক্সট (`en.ts`, `bn.ts`) |
+| `src/proxy.ts` | `/` → ইংরেজি, `/bn` → বাংলা |
+| `src/components/admin/` | Admin ড্যাশবোর্ড ও CSV বাটন |
+| `src/components/` | Intro, Nav, Finder, ProjectGrid, ContactForm, Tower… |
+| `src/app/(frontend)/globals.css` | ডিজাইন (পুরনো `style.css` একই) |
+| `static-site/` | পুরনো স্ট্যাটিক সংস্করণ (HTML/CSS/JS + Decap) — নতুন সাইটের জন্য লাগে না, শুধু `seed` এর ডেটা এখান থেকে আসে |
+| `public/` | `motion.js`, `smooth.js`, `tracking.js`, `effects.js`, ছবি |
+| `src/export-shared.ts` | সাইটকে স্ট্যাটিক ফাইলে export করে (shared hosting) |
+| `shared-host/` | `enquiry.php` (ফর্ম → MySQL), `schema.sql`, `config.sample.php` |
+| `src/seed.ts` | `static-site/data/*.json` থেকে কনটেন্ট ঢোকায় |
+
+## ৬. সমস্যা হলে
+| সমস্যা | সমাধান |
+|---|---|
+| `PAYLOAD_SECRET is not set` | `.env`-এ `PAYLOAD_SECRET=` বসাও |
+| Admin-এ লগইন হয় না | `npm run seed` আবার চালাও (admin না থাকলে বানায়) |
+| `npm run seed` আটকে যায় | `credence.db` মুছে আবার seed করো |
+| Port 3000 busy | `PORT=3100 npm run dev` |

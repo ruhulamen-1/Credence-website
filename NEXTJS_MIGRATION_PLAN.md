@@ -2,7 +2,7 @@
 
 Goal: move Credence from the static site (HTML/JSON + Decap) to **Next.js + Payload CMS** so marketing/sales can run everything from `/admin` — content, SEO, tracking, **leads CRM**, roles — with the same design and motion.
 
-The new app lives in **`web/`**. The static site in the repo root stays untouched and live until cut-over, so nothing breaks while the new site is checked.
+The new app is the **repository root** (one folder: `npm install` / `npm run dev` right here). The old static site lives in **`static-site/`** and is kept only as a reference and as the source of the seed data.
 
 ## Stack
 | Part | Choice |
@@ -56,13 +56,13 @@ The new app lives in **`web/`**. The static site in the repo root stays untouche
 1. **Database** — create a Postgres DB (Neon free tier). Copy its connection string.
 2. **Env vars** (Vercel → Project → Settings → Environment Variables):
    `DATABASE_URL`, `PAYLOAD_SECRET` (`openssl rand -hex 32`), `CRON_SECRET` (for scheduled publishing — `vercel.json` already calls `/api/payload-jobs/run` every minute; needs a Vercel plan that allows per-minute crons), `NEXT_PUBLIC_SITE_URL`, and for uploads `S3_BUCKET`, `S3_ENDPOINT`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY` (Cloudflare R2). Optional: `RESEND_API_KEY`, `LEADS_FROM`, `LEADS_TO`.
-3. **Create the production schema once** (from `web/`, with `DATABASE_URL` pointing at Postgres):
+3. **Create the production schema once** (with `DATABASE_URL` pointing at Postgres):
    ```
-   npm run migrate:create -- initial     # writes web/src/migrations/*
+   npm run migrate:create -- initial     # writes src/migrations/postgres/*
    git add -A && git commit -m "Add DB migrations" && git push
    ```
    From then on every deploy runs `payload migrate` before building.
-4. **Vercel project**: import the GitHub repo → Root Directory **`web`** → Build Command **`npm run ci`** → Deploy.
+4. **Vercel project**: import the GitHub repo → Root Directory = repository root (leave empty) → Build Command **`npm run ci`** → Deploy.
 5. **Seed content & first admin** (one time, from your computer, against the production DB):
    ```
    DATABASE_URL=postgres://… SEED_ADMIN_EMAIL=you@company.com SEED_ADMIN_PASSWORD='a-strong-password' npm run seed

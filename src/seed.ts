@@ -1,11 +1,11 @@
-/* Imports the original static-site content (../data/*.json) into the CMS and creates the first admin.
+/* Imports the original static-site content (static-site/data/*.json) into the CMS and creates the first admin.
    Run once:  npm run seed      (safe to re-run: existing projects are updated, not duplicated) */
 import config from '@payload-config'
 import fs from 'fs'
 import path from 'path'
 import { getPayload } from 'payload'
 
-const root = path.resolve(process.cwd(), '..', 'data')
+const root = path.resolve(process.cwd(), 'static-site', 'data')
 const read = (f: string) => JSON.parse(fs.readFileSync(path.join(root, f), 'utf8'))
 
 async function main() {

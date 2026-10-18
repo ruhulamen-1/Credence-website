@@ -1,6 +1,6 @@
 /* Builds the whole website as plain static files for ordinary shared hosting (cPanel).
    Run:  npm run export:shared -- --site-url=https://yourdomain.com
-   Output: web/dist-shared/  → upload its CONTENT into public_html.
+   Output: dist-shared/  → upload its CONTENT into public_html.
    Content comes from the local CMS database; forms post to enquiry.php (PHP + MySQL on the host). */
 import config from '@payload-config'
 import { spawn, spawnSync, type ChildProcess } from 'child_process'

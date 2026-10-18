@@ -19,8 +19,7 @@ phpMyAdmin → বাঁ পাশে **New** →
 
 ## ধাপ ৩ — `.env` ঠিক করা
 ```bash
-cd web
-cp .env.example .env        # Windows CMD: copy .env.example .env
+cp .env.example .env        # Windows: copy .env.example .env
 ```
 `.env` খুলে `DATABASE_URL` লাইনটা বদলাও:
 ```
@@ -45,7 +44,7 @@ npm run dev
 ডেভেলপমেন্টে (`npm run dev`) টেবিল নিজে তৈরি/বদলায়। লাইভে নিজে নিয়ম মেনে migration দিয়ে:
 ```bash
 # DATABASE_URL লাইভ MySQL-এর দিকে রেখে, একবার:
-npm run migrate:create -- initial       # web/src/migrations/mysql/ এ ফাইল তৈরি
+npm run migrate:create -- initial       # src/migrations/mysql/ এ ফাইল তৈরি
 git add -A && git commit -m "MySQL migrations"
 # ডিপ্লয়ের সময়: npm run ci  (আগে `payload migrate`, তারপর build)
 ```
