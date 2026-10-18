@@ -25,7 +25,7 @@ server.on("error", e => {
 });
 server.listen(PORT, () => {
   console.log(`\n  Website : http://localhost:${PORT}\n  Admin   : http://localhost:${PORT}/admin/\n\n  Press Ctrl + C to stop both.\n`);
-  const cms = spawn("npx", ["--yes", "decap-server"], { cwd: ROOT, stdio: ["ignore", "inherit", "inherit"], shell: true });
+  const cms = spawn("npx --yes decap-server", { cwd: ROOT, stdio: ["ignore", "inherit", "inherit"], shell: true });
   const stop = () => { cms.kill(); server.close(); process.exit(0); };
   process.on("SIGINT", stop); process.on("SIGTERM", stop);
   cms.on("exit", c => c && console.error("Admin proxy stopped (code " + c + "). Website is still running."));
