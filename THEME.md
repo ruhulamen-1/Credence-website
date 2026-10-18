@@ -37,6 +37,14 @@ Rule: ~60% white/mist, ~30% sky blue, ~10% gold + ink. No other accent colours (
 5. **Facts strip** – glass tiles with big serif numbers (used on project pages).
 
 ## Motion
+Scroll motion lives in `motion.js` (no libraries; styles under `html.m` in `style.css`; skipped for reduced-motion):
+- **Headlines** split into words that slide up from a mask, staggered (hero plays after the intro opens).
+- **Project cards** fan in on scroll: rise, un-tilt (tilt follows column position) and scale up; smoothed with easing.
+- **Hero parallax:** tower/photo drifts slower than the page, copy lifts.
+- **Stacked sheets:** Footprints / Why / Contact slide over the previous section with rounded tops.
+- **"Why" cards** drift at different speeds (diagonal cascade).
+- **Images** reveal through an inset clip-path mask with a slow zoom-out.
+- **Footer wordmark** "CREDENCE" sharpens from blur as it enters. Thin gold→sky **scroll progress bar** at the top.
 - Easing `cubic-bezier(.2,.7,.2,1)`; entrances 0.9–2.4s; sections `.reveal` (fade + 28px rise) via IntersectionObserver; numbers count up.
 - Everything honours `prefers-reduced-motion` (animations off, intro skipped).
 
