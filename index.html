@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Credence Housing Limited — Live Above the Ordinary</title>
+<meta name="description" content="Credence Housing Limited — a leading real estate developer in Dhaka, Bangladesh. 50+ completed projects, 700+ homes handed over.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+<!-- INTRO: clouds -->
+<section class="intro" id="intro" aria-label="Introduction">
+  <div class="cloud-layer c1"></div><div class="cloud-layer c2"></div><div class="cloud-layer c3"></div>
+  <div class="intro-copy">
+    <h1>Above<br>The<br>Clouds</h1>
+    <p>Discover exceptional residences where architecture meets altitude — homes by Credence, rising above the ordinary skyline of Dhaka.</p>
+    <button class="btn dark" id="enter">Enter Credence</button>
+  </div>
+  <span class="scroll-hint">or scroll</span>
+</section>
+
+<header class="nav" id="nav">
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu"><span></span>Menu</button>
+  <a class="logo" href="#top" aria-label="Credence Housing Limited">CREDENCE<small>Housing Limited</small></a>
+  <a class="nav-cta" href="#contact">Enquire</a>
+</header>
+<nav class="menu" id="menu" aria-label="Main">
+  <a href="#projects">Projects</a><a href="#footprints">About</a><a href="#why">Why Credence</a><a href="#contact">Contact</a>
+  <p>Hotline <strong>16769</strong></p>
+</nav>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="sky"></div>
+    <div class="hero-copy">
+      <h2>Live Above<br>The Ordinary</h2>
+      <p>Discover exceptional residences where iconic architecture meets elevated living. Experience breathtaking views, timeless design, and a new standard of luxury.</p>
+      <p class="from">Residences in Dhaka’s finest neighbourhoods<br><strong>Banani · Gulshan · Dhanmondi</strong></p>
+    </div>
+    <div class="tower-wrap"><svg id="tower" viewBox="0 0 300 640" aria-hidden="true"></svg></div>
+    <div class="mist"></div>
+
+    <form class="finder" id="finder" aria-label="Find your property">
+      <h3>Find the best place</h3>
+      <div class="fields">
+        <label>Looking for
+          <select name="type"><option value="">Any type</option><option>Apartment</option><option>Commercial</option></select></label>
+        <label>Status
+          <select name="status"><option value="">Any status</option><option>Ongoing</option><option>Completed</option></select></label>
+        <label>Location
+          <select name="loc" id="locSel"><option value="">All locations</option></select></label>
+        <label>Project
+          <select name="name" id="nameSel"><option value="">All projects</option></select></label>
+      </div>
+      <div class="finder-foot">
+        <div class="chips" id="chips" role="group" aria-label="Quick filter">
+          <span>Filter:</span><button type="button" data-loc="Dhanmondi">Dhanmondi</button><button type="button" data-loc="Banani">Banani</button><button type="button" data-loc="Gulshan">Gulshan</button><button type="button" data-loc="">Reset</button>
+        </div>
+        <button class="btn dark" type="submit">Search Properties</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- INTRO COPY -->
+  <section class="lead reveal">
+    <p class="eyebrow">Deluxe Abodes Redefining Sophistication</p>
+    <p class="big">Dive into the classy world of architecture reflecting top‑notch design, quality and engineering. Credence’s exclusive apartments are fit to earn you a delightful life full of comfort, class and style.</p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="sec-head reveal"><p class="eyebrow">Featured Projects</p><h2>Homes with a view</h2><span id="count" class="count"></span></div>
+    <div class="grid" id="grid"></div>
+    <p class="none" id="none" hidden>No projects match that search. <button class="link" id="resetAll">Show all projects</button></p>
+  </section>
+
+  <!-- FOOTPRINTS -->
+  <section class="footprints" id="footprints">
+    <div class="sec-head reveal"><p class="eyebrow">Footprints</p><h2>Built across Dhaka’s finest addresses</h2></div>
+    <div class="stats reveal">
+      <div><b data-n="50">0</b><sup>+</sup><span>Completed projects</span></div>
+      <div><b data-n="700">0</b><sup>+</sup><span>Homes handed over</span></div>
+      <div><b data-n="18">0</b><sup>+</sup><span>Neighbourhoods</span></div>
+    </div>
+    <p class="body reveal">Credence Housing Limited has an illustrious history of delivering exceptional property developments throughout Dhaka — from Banani, Gulshan, Dhanmondi and Lalmatia to Kalabagan, Khilgaon, Shyamoli, Uttara and Mohammadpur, including Adabor, Green Road, North Road, Humayun Road, Babar Road, Tejgaon, Badda, Siddheswari and Mirpur.</p>
+    <p class="body reveal">We take immense pride in delivering projects with precision and on time, while upholding the highest standards of quality. Timely handovers, top‑notch quality and satisfied clients are at the heart of our success story.</p>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" id="why">
+    <div class="sec-head reveal"><p class="eyebrow">Why Credence</p><h2>The best real estate company in Dhaka, Bangladesh</h2></div>
+    <div class="cards">
+      <article class="reveal"><i>01</i><h3>Quality you can trust</h3><p>Strict standards from materials and structure to finishing and quality control — homes built safe, durable and comfortable for years.</p></article>
+      <article class="reveal"><i>02</i><h3>On‑time delivery</h3><p>Careful planning, construction management and timely execution, so you can plan your future without uncertainty.</p></article>
+      <article class="reveal"><i>03</i><h3>Thoughtful design</h3><p>Natural light, ventilation, space utilisation and everyday function — designed to look good and live better.</p></article>
+      <article class="reveal"><i>04</i><h3>Built with responsibility</h3><p>Every project considers location, planning, standards and surroundings — from first plan to handover.</p></article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-info reveal">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Book a free session with our expert counsellors</h2>
+      <dl>
+        <dt>Corporate Office</dt><dd>House‑15, Road‑13/A, Dhanmondi R/A, Dhaka‑1209</dd>
+        <dt>Business Center</dt><dd>House‑15B, Road‑16 (Old‑27), Dhanmondi, Dhaka‑1209</dd>
+        <dt>General enquiry</dt><dd><a href="tel:+880241021375">+880 2 41021375</a> · <a href="tel:+880241021378">+880 2 41021378</a></dd>
+        <dt>Hotline</dt><dd><a href="tel:16769">16769</a></dd>
+        <dt>Email</dt><dd><a href="mailto:info@credencehousinglimited.com">info@credencehousinglimited.com</a></dd>
+      </dl>
+    </div>
+    <form class="form reveal" id="contactForm" novalidate>
+      <label>Full name<input name="name" required autocomplete="name"><em></em></label>
+      <label>Contact number<input name="phone" type="tel" required autocomplete="tel" inputmode="tel"><em></em></label>
+      <label>Email (optional)<input name="email" type="email" autocomplete="email"><em></em></label>
+      <label>Message<textarea name="msg" rows="4" required></textarea><em></em></label>
+      <button class="btn dark" type="submit">Request a call back</button>
+      <p class="ok" id="ok" role="status" hidden>Thank you — our counsellor will call you shortly.</p>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div><strong>CREDENCE</strong> Housing Limited</div>
+  <div>© 2026 Credence Housing Ltd. · Hotline 16769</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
