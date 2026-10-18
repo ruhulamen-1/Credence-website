@@ -124,7 +124,7 @@ footer strong{color:#fff;letter-spacing:.25em}
 /* project detail page */
 .phero{min-height:88svh;padding-bottom:0}
 .phero .hero-copy{opacity:1;transform:none;max-width:560px}
-.phero h2{font-size:clamp(52px,9vw,110px);letter-spacing:.04em;text-transform:uppercase}
+.phero h1,.phero h2{font-size:clamp(52px,9vw,110px);letter-spacing:.04em;text-transform:uppercase}
 .phero .tower-wrap{bottom:-4%}
 .badge{display:inline-block;margin-top:22px;padding:8px 16px;border-radius:99px;background:rgba(255,255,255,.7);backdrop-filter:blur(8px);font-size:12px;letter-spacing:.08em}
 .crumbs{font-size:12px;letter-spacing:.08em;margin-bottom:18px}.crumbs a{text-decoration:none;color:#26374b}.crumbs a:hover{text-decoration:underline}
@@ -142,3 +142,5 @@ footer strong{color:#fff;letter-spacing:.25em}
 @media(max-width:900px){.facts{grid-template-columns:repeat(2,1fr)}.story{grid-template-columns:1fr}.facts div:last-child{grid-column:1/-1}}
 .phero .tower-wrap{width:min(24vw,240px);bottom:24%;right:clamp(10px,12vw,200px)}
 @media(max-width:560px){.phero .tower-wrap{width:36vw;right:-4vw;bottom:36%}}
+
+.phero .ph{font-size:clamp(52px,9vw,110px);letter-spacing:.04em;text-transform:uppercase;margin-bottom:22px}

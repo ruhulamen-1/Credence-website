@@ -1,0 +1,45 @@
+[
+  {
+    "slug": "arkology", "name": "Arkology", "area": "Gulshan", "type": "Apartment", "status": "Ongoing", "hue": 340, "floors": 18,
+    "addr": "Plot-1/B, Road-13, Block-SW(D), Gulshan-1, Dhaka",
+    "tagline": "An exclusive residence beside Gulshan Lake — luxury, privacy and spacious living, with lake breezes and greenery at your doorstep.",
+    "seoTitle": "Arkology — Luxury Apartments Beside Gulshan Lake | Credence",
+    "seoDesc": "Credence Arkology: 15-storey luxury residence beside Gulshan Lake, Gulshan-1, Dhaka. One apartment per floor, ~3,366 sq. ft. Handover August 2029.",
+    "mapQuery": "Road 13, Block SW(D), Gulshan 1, Dhaka",
+    "facts": [
+      {"v": "15", "l": "Storeys (B2+B1+G+M+14)"}, {"v": "1", "l": "Apartment per floor"},
+      {"v": "3,366", "l": "sq. ft. each (approx.)"}, {"v": "24", "l": "Car parking spaces"}, {"v": "Aug 2029", "l": "Expected handover"}
+    ],
+    "storyTitle": "A luxury apartment beside Gulshan Lake",
+    "story": [
+      "Credence Arkology by Credence Housing Ltd. is an exclusive residential project beside Gulshan Lake in Gulshan‑1, Dhaka. Designed for those who value luxury, privacy, spaciousness and a peaceful lifestyle, it combines the beauty of nature with the convenience of modern city living.",
+      "Built on 10.53 kathas of land, this 15‑storey building features only one apartment per floor. Each apartment offers approximately 3,366 sq. ft. of living space plus an approximately 27 sq. ft. planter area. With 14 apartments and 24 car parking spaces, the project is planned for comfortable, spacious family living.",
+      "Surrounded by lush greenery and refreshing lake views, Arkology offers a serene environment away from the city’s bustle, while shopping malls, fine dining and business districts stay within easy reach."
+    ],
+    "spec": [
+      ["Address", "Plot-1/B, Road-13, Block-SW(D), Gulshan-1, Dhaka"], ["Land area", "10.53 Katha"],
+      ["Height", "(B2+B1+G+M+14) 15 storied"], ["Building type", "Residential"], ["Facing", "North"],
+      ["Number of apartments", "14"], ["Units per floor", "1"],
+      ["Size of each apartment", "Type-A: 3,366 sq. ft. (approx.) + planter 27 sq. ft. (approx.)"],
+      ["Car parking", "24"], ["Handover date", "August, 2029"]
+    ]
+  },
+  {
+    "slug": "park-snowflake", "name": "Park Snowflake", "area": "Dhanmondi", "type": "Apartment", "status": "Ongoing", "hue": 208,
+    "addr": "Plot-72, Kalabagan, North Dhanmondi, Dhaka",
+    "mapQuery": "Kalabagan, North Dhanmondi, Dhaka", "spec": [["Address", "Plot-72, Kalabagan, North Dhanmondi, Dhaka"]]
+  },
+  {
+    "slug": "bella-vista", "name": "Bella Vista", "area": "Dhanmondi", "type": "Apartment", "status": "Ongoing", "hue": 28,
+    "addr": "Plot-92, Road-9/A, Dhanmondi, Dhaka",
+    "mapQuery": "Road 9/A, Dhanmondi, Dhaka", "spec": [["Address", "Plot-92, Road-9/A, Dhanmondi, Dhaka"]]
+  },
+  {
+    "slug": "helena-sparta", "name": "Helena Sparta", "area": "Banani", "type": "Apartment", "status": "Ongoing", "hue": 190,
+    "addr": "Plot-39, Road-07, Block-G, Banani, Dhaka",
+    "mapQuery": "Road 7, Block G, Banani, Dhaka", "spec": [["Address", "Plot-39, Road-07, Block-G, Banani, Dhaka"]]
+  },
+  {"slug": "paramount-residences", "name": "Paramount Residences", "area": "Dhanmondi", "type": "Apartment", "status": "Completed", "hue": 240, "addr": "Dhaka", "mapQuery": "Dhaka"},
+  {"slug": "platinum", "name": "Platinum", "area": "Dhanmondi", "type": "Apartment", "status": "Completed", "hue": 160, "addr": "Dhaka", "mapQuery": "Dhaka"},
+  {"slug": "cynosure", "name": "Cynosure", "area": "Dhanmondi", "type": "Apartment", "status": "Completed", "hue": 20, "addr": "Dhaka", "mapQuery": "Dhaka"}
+]

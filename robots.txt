@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Sitemap: https://ruhulamen-1.github.io/Credence-website/sitemap.xml
