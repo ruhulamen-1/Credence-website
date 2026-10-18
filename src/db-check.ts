@@ -31,9 +31,9 @@ try {
       const [maj, min, pat] = v.split(/[.-]/).map((x) => parseInt(x, 10))
       const maria = /maria/i.test(raw)
       const ok = maria ? maj > 10 || (maj === 10 && min >= 6) : maj > 8 || (maj === 8 && (min > 0 || pat >= 19))
-      console.log(`\nServer version = ${v}${maria ? ' (MariaDB)' : ' (MySQL)'}  →  ${ok ? 'OK' : '✖ TOO OLD'}`)
+      console.log(`\nServer version = ${v}${maria ? ' (MariaDB)' : ' (MySQL)'}  →  ${ok ? 'OK' : '⚠ older than recommended'}`)
       if (!ok) console.log(maria
-        ? '  This site needs MariaDB 10.6+ (XAMPP usually ships 10.4). Install a newer MariaDB/MySQL — see MYSQL_SETUP.md ("Version").'
+        ? '  Recommended: MariaDB 10.6+. On older MariaDB (XAMPP: 10.4) the site installs a JSON_ARRAYAGG compatibility function automatically — it should work, but if you still see errors, upgrade MariaDB (MYSQL_SETUP.md, "Version").'
         : '  This site needs MySQL 8.0.19+. Install a newer MySQL — see MYSQL_SETUP.md ("Version").')
     } catch { /* version check is optional */ }
   }

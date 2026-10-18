@@ -1,6 +1,7 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { mysqlAdapter } from 'payload-db-mysql'
+import { installJsonArrayAggShim } from './lib/mariadbShim'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -26,6 +27,8 @@ if (!secret) throw new Error('PAYLOAD_SECRET is not set. Generate one with: open
 
 export default buildConfig({
   admin: { components: { beforeDashboard: ['/components/admin/LeadStats#LeadStats'] }, user: Users.slug, importMap: { baseDir: path.resolve(dirname) }, meta: { titleSuffix: ' — Credence Admin' } },
+  // Old MariaDB (XAMPP 10.4) needs a small compatibility function; no-op for every other database.
+  onInit: async (payload) => { if (url.startsWith('mysql')) await installJsonArrayAggShim(payload) },
   collections: [Projects, Posts, Team, Careers, LandingPages, Leads, Redirects, Media, Users],
   localization: { locales: [{ label: 'English', code: 'en' }, { label: 'বাংলা', code: 'bn' }], defaultLocale: 'en', fallback: true },
   // Scheduled publishing needs the job runner. Self-hosted: runs every minute. Vercel: a cron calls /api/payload-jobs/run (see vercel.json).

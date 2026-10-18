@@ -11,6 +11,15 @@
 `FUNCTION credence_website.json_arrayagg does not exist`
 নিজের সংস্করণ দেখতে phpMyAdmin → **SQL** ট্যাব → `SELECT VERSION();` → Go। (`npm run db:check`-ও সংস্করণ দেখিয়ে দেয়।)
 
+> **XAMPP (MariaDB 10.4) নিয়ে আপডেট:** সাইট এখন নিজেই পুরনো MariaDB চিনে ডাটাবেসে একটা ছোট সামঞ্জস্য-ফাংশন (`JSON_ARRAYAGG`) বসিয়ে নেয়, তাই XAMPP-এই চলার কথা। **আমি আসল MariaDB-তে এটা চালিয়ে দেখতে পারিনি** — এরর এলে নিচের উপায়গুলো নাও।
+
+**XAMPP রেখেই MariaDB নতুন করা (সবচেয়ে নির্ভরযোগ্য):**
+1. XAMPP-এ MySQL **Stop**। `C:\xampp\mysql` ফোল্ডারটা কপি করে ব্যাকআপ রাখো।
+2. mariadb.org/download থেকে **MariaDB 10.11 LTS → ZIP (Windows x64)** নামাও।
+3. ZIP থেকে `bin`, `lib`, `share` ফোল্ডার `C:\xampp\mysql\`-এ কপি করো (পুরনোর ওপর বসাও; `data` আর `bin\my.ini` রেখে দাও)।
+4. XAMPP-এ MySQL **Start**, তারপর টার্মিনালে `C:\xampp\mysql\bin\mariadb-upgrade.exe -u root` চালাও।
+5. phpMyAdmin → `SELECT VERSION();` এ ১০.১১ আসলে ঠিক।
+
 পুরনো হলে তিনটি উপায়:
 1. **নতুন MariaDB/MySQL ইনস্টল** করে সেটা ব্যবহার (নিচে ধাপ)।
 2. **Laragon** ব্যবহার (এতে নতুন MySQL ও phpMyAdmin-সহ সব একসাথে আসে)।
