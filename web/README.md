@@ -19,7 +19,7 @@ npm run dev
   - Email: `admin@credence.local`
   - Password: `ChangeMe123!` (`.env`-এর `SEED_ADMIN_*` থেকে; **নিজের পাসওয়ার্ড দিয়ে বদলে নাও**)
 
-ডাটাবেস লোকালে একটা ফাইল (`credence.db`) — আলাদা কিছু install লাগে না।
+ডাটাবেস লোকালে একটা ফাইল (`credence.db`, SQLite) — আলাদা কিছু install লাগে না। **MySQL/phpMyAdmin চাইলে** `.env`-এ `DATABASE_URL=mysql://root:@127.0.0.1:3306/credence` দাও — গাইড: [`MYSQL_SETUP.md`](MYSQL_SETUP.md) (কমিউনিটি অ্যাডাপ্টার, আসল MySQL-এ আমি পরীক্ষা করিনি)।
 
 ## ২. Admin দিয়ে কী করা যায়
 | মেনু | কাজ |

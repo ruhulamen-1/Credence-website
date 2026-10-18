@@ -1,5 +1,6 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
+import { mysqlAdapter } from 'payload-db-mysql'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -36,10 +37,16 @@ export default buildConfig({
   editor: lexicalEditor(),
   secret,
   typescript: { outputFile: path.resolve(dirname, 'payload-types.ts') },
-  // Local dev: SQLite file. Production: set DATABASE_URL=postgres://… (Neon / Supabase / any Postgres).
-  db: url.startsWith('postgres')
-    ? postgresAdapter({ pool: { connectionString: url } })
-    : sqliteAdapter({ client: { url } }),
+  // The database is chosen by DATABASE_URL in .env:
+  //   mysql://user:pass@127.0.0.1:3306/credence      → MySQL / MariaDB (phpMyAdmin)   [community adapter payload-db-mysql]
+  //   postgres://user:pass@host:5432/credence        → PostgreSQL (official adapter)
+  //   file:./credence.db   (default)                 → SQLite file for quick local work
+  // Each database keeps its own migration folder (src/migrations/<name>).
+  db: url.startsWith('mysql')
+    ? mysqlAdapter({ pool: { uri: url }, migrationDir: path.resolve(dirname, 'migrations/mysql') })
+    : url.startsWith('postgres')
+      ? postgresAdapter({ pool: { connectionString: url }, migrationDir: path.resolve(dirname, 'migrations/postgres') })
+      : sqliteAdapter({ client: { url } }),
   sharp,
   plugins: [
     // Production file storage (Vercel has a read-only disk): Cloudflare R2 / AWS S3 / any S3-compatible bucket.

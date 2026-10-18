@@ -1,0 +1,64 @@
+# MySQL / MariaDB (phpMyAdmin) দিয়ে ওয়েবসাইট চালানো
+
+`.env`-এ `DATABASE_URL` বদলালেই ডাটাবেস বদলে যায়। `mysql://…` দিলে MySQL/MariaDB ব্যবহার হয়, সব টেবিল phpMyAdmin-এ দেখা যায়।
+
+> ⚠ **জেনে রাখো:** Payload CMS-এর নিজস্ব (অফিশিয়াল) MySQL অ্যাডাপ্টার নেই। এখানে কমিউনিটি অ্যাডাপ্টার [`payload-db-mysql`](https://github.com/Mrseams/payload-db-mysql) ব্যবহার করা হয়েছে (একজন মেইনটেইনার, নতুন প্রকাশ `0.1.0`; তারা MySQL 8.4 ও MariaDB 11.4-এ নিজেদের টেস্ট চালায়)।
+> **আমি এটা আসল MySQL সার্ভারে চালিয়ে দেখতে পারিনি** (আমার পরিবেশে MySQL নেই) — শুধু যাচাই করেছি যে কোড বিল্ড হয় এবং `mysql://` দিলে অ্যাডাপ্টারটি লোড হয়ে সার্ভারে সংযোগের চেষ্টা করে। তোমার কম্পিউটারে প্রথম চালানোয় কোনো এরর এলে লেখাটা পাঠিও।
+> গুরুত্বপূর্ণ ব্যবসায়িক সাইটের জন্য অফিশিয়াল সমর্থিত PostgreSQL-ই বেশি নিরাপদ বাছাই।
+
+## ধাপ ১ — MySQL চালু করা (Windows: XAMPP)
+1. [XAMPP](https://www.apachefriends.org) ইনস্টল করো → Control Panel-এ **MySQL** (ও **Apache**) **Start**।
+2. ব্রাউজারে <http://localhost/phpmyadmin> খোলো।
+
+## ধাপ ২ — ডাটাবেস বানানো
+phpMyAdmin → বাঁ পাশে **New** →
+- নাম: `credence`
+- Collation: **`utf8mb4_unicode_ci`** (জরুরি — বাংলা লেখা ও সার্চের জন্য) → **Create**।
+
+(চাইলে আলাদা ইউজার: **User accounts → Add user account** → ডাটাবেসে সব অনুমতি। XAMPP-এ শুধু শেখার জন্য `root` (পাসওয়ার্ড ছাড়া) চলে — লাইভে কখনো নয়।)
+
+## ধাপ ৩ — `.env` ঠিক করা
+```bash
+cd web
+cp .env.example .env        # Windows CMD: copy .env.example .env
+```
+`.env` খুলে `DATABASE_URL` লাইনটা বদলাও:
+```
+DATABASE_URL=mysql://root:@127.0.0.1:3306/credence
+```
+- ইউজার/পাসওয়ার্ড থাকলে: `mysql://ইউজার:পাসওয়ার্ড@127.0.0.1:3306/credence`
+- পাসওয়ার্ডে `@ : / # ?` থাকলে URL-encode করো (`@` → `%40`)।
+- `PAYLOAD_SECRET`-এ যেকোনো লম্বা এলোমেলো লেখা দাও।
+
+## ধাপ ৪ — চালানো
+```bash
+npm install
+npm run seed      # টেবিল তৈরি + ৭টা প্রজেক্ট + প্রথম admin
+npm run dev
+```
+- সাইট: <http://localhost:3000> · অ্যাডমিন: <http://localhost:3000/admin> (`admin@credence.local` / `ChangeMe123!` — বদলে নাও)
+- phpMyAdmin-এ `credence` ডাটাবেসে টেবিল দেখা যাবে: `projects`, `leads`, `posts`, `team`, `careers`, `users`, `media`, `redirects`, …
+
+**যাচাই:** সাইটে একটা ফর্ম জমা দাও → phpMyAdmin → `leads` → **Browse**-এ লিড দেখা গেলে সব ঠিক।
+
+## ধাপ ৫ — প্রোডাকশনে (লাইভ ডাটাবেস)
+ডেভেলপমেন্টে (`npm run dev`) টেবিল নিজে তৈরি/বদলায়। লাইভে নিজে নিয়ম মেনে migration দিয়ে:
+```bash
+# DATABASE_URL লাইভ MySQL-এর দিকে রেখে, একবার:
+npm run migrate:create -- initial       # web/src/migrations/mysql/ এ ফাইল তৈরি
+git add -A && git commit -m "MySQL migrations"
+# ডিপ্লয়ের সময়: npm run ci  (আগে `payload migrate`, তারপর build)
+```
+> লাইভ ডাটাবেস যদি cPanel-এর হয়, সাধারণত তা শুধু ওই সার্ভারের ভেতর থেকে (`localhost`) খোলা — তোমার কম্পিউটার থেকে সংযোগ করতে cPanel → **Remote MySQL**-এ তোমার আইপি যোগ করতে হয়। আর সাইট (Node.js) ওই হোস্টেই চালাতে হলে হোস্টে Node.js সমর্থন লাগবে।
+
+## সমস্যা হলে
+| এরর | কারণ/সমাধান |
+|---|---|
+| `cannot connect to MySQL … ECONNREFUSED` | MySQL চালু নেই (XAMPP-তে Start চাপো) বা পোর্ট/ইউআরএল ভুল |
+| `Access denied for user` | ইউজার/পাসওয়ার্ড ভুল, বা ইউজারের ওই ডাটাবেসে অনুমতি নেই |
+| `Unknown database 'credence'` | ধাপ ২-এ ডাটাবেস বানানো হয়নি |
+| বাংলা লেখা `???` দেখায় | ডাটাবেসের collation `utf8mb4_unicode_ci` নয় — ডাটাবেস মুছে ঠিক collation-এ আবার বানাও |
+| `npm run seed` আটকে যায়/এরর | এরর লেখাটা পাঠাও; দ্রুত ফেরত যেতে `DATABASE_URL=file:./credence.db` করলে SQLite-এ চলবে |
+
+## আবার অন্য ডাটাবেসে ফেরা
+`.env`-এ শুধু `DATABASE_URL` বদলাও (`file:./credence.db` বা `postgres://…`)। প্রতিটি ডাটাবেসের migration আলাদা ফোল্ডারে (`src/migrations/postgres`, `src/migrations/mysql`)।
