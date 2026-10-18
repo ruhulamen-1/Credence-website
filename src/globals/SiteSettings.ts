@@ -22,6 +22,7 @@ export const SiteSettings: GlobalConfig = {
         ] },
         { label: 'Home page', fields: [
           { name: 'heroImage', type: 'upload', relationTo: 'media', label: 'Home hero photo (replaces the illustrated tower)', admin: { description: 'Best: landscape or portrait building photo, at least 1200px wide, under ~400 KB. Leave empty to keep the illustrated tower. Remember to write the alt text in Media.' } },
+          { name: 'heroCutout', type: 'checkbox', defaultValue: false, label: 'Transparent PNG (no card)', admin: { description: 'Tick this if the hero image is a background-removed PNG: it is shown directly on the hero, without the rounded card.' } },
         ] },
         { label: 'SEO', fields: [
           { name: 'siteUrl', type: 'text', required: true, defaultValue: 'http://localhost:3000', admin: { description: 'Public URL, no trailing slash' } },

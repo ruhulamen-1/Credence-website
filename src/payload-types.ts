@@ -1019,6 +1019,10 @@ export interface SiteSetting {
    */
   heroImage?: (number | null) | Media;
   /**
+   * Tick this if the hero image is a background-removed PNG: it is shown directly on the hero, without the rounded card.
+   */
+  heroCutout?: boolean | null;
+  /**
    * Public URL, no trailing slash
    */
   siteUrl: string;
@@ -1056,6 +1060,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
       };
   whatsapp?: T;
   heroImage?: T;
+  heroCutout?: T;
   siteUrl?: T;
   homeTitle?: T;
   homeDescription?: T;

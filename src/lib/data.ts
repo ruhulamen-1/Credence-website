@@ -12,7 +12,7 @@ export type Project = {
 }
 export type Settings = {
   name: string; address: string; email: string; hotline: string; phones: string[]; whatsapp: string
-  siteUrl: string; homeTitle: string; homeDescription: string; ogImage: Img | null; heroImage: Img | null
+  siteUrl: string; homeTitle: string; homeDescription: string; ogImage: Img | null; heroImage: Img | null; heroCutout: boolean
   consentRequired: boolean; tracking: { gtm: string; ga4: string; metaPixel: string; tiktokPixel: string }
 }
 export type Post = {
@@ -50,6 +50,7 @@ export async function getSettings(lang: Lang = 'en'): Promise<Settings> {
     homeDescription: g.homeDescription || '',
     ogImage: img(g.ogImage),
     heroImage: img(g.heroImage, 'Credence'),
+    heroCutout: !!g.heroCutout,
     consentRequired: g.consentRequired !== false,
     tracking: { gtm: t.gtm || '', ga4: t.ga4 || '', metaPixel: t.metaPixel || '', tiktokPixel: t.tiktokPixel || '' },
   }
