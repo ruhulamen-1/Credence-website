@@ -260,7 +260,7 @@ footer{background:#231f20;color:#fff;padding:clamp(40px,6vw,70px) clamp(20px,6vw
 .foot-offices>div{margin-bottom:18px}
 .foot-offices dt,.foot-col h4{color:#ff4d00;font:400 12px var(--sans);margin:0 0 6px;letter-spacing:.02em}
 .foot-col h4{margin-top:18px}.foot-col h4:first-child{margin-top:0}
-.foot-offices dd{margin:0;line-height:1.5}
+.foot-offices dd{margin:0;line-height:1.5;color:#fff}
 footer a{color:#fff;text-decoration:none}footer a:hover{color:#ff4d00}
 .foot-col{display:flex;flex-direction:column;gap:12px}
 .foot-col h4{margin-bottom:2px}
